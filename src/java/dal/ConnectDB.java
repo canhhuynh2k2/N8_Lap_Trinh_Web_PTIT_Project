@@ -11,7 +11,7 @@ public class ConnectDB {
     public ConnectDB()
     {
         try {
-            String url = "jdbc:sqlserver://localhost:1433;databaseName= ttcs";
+            String url = "jdbc:sqlserver://localhost:1433;databaseName= web8";
             String username = "sa";
             String password = "123";
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");

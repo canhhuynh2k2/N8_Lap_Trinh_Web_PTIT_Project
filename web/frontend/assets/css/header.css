@@ -75,6 +75,7 @@
 .header__nav{
     background-color: hsl(13, 100%, 50%);
     display: flex;
+    height: 62px;
     justify-content: space-between;
     /* margin-top: 100px; */
     top: 100px;
@@ -88,9 +89,12 @@
 .header__nav-item{
     text-transform: uppercase;
     color: #fff;
+    font-weight: 500;
     text-decoration: none;
     padding: 6px;
-    line-height: 78px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    line-height: 62px;
 }
 .header__nav-list li, .header__nav-btn{
     display: inline-block;
@@ -100,6 +104,7 @@
 .header__nav-item:hover{
     color: #dbaf56;
     cursor: pointer;
+    background: #f06464;
 }
 .header__nav-btn{
     margin-right: 24px;
@@ -113,7 +118,7 @@
     align-items: center;
     list-style-type: none;
     display: inline-block;
-    line-height: 73px;
+    line-height: 62px;
 }
 
 .-display-inline{
@@ -148,7 +153,7 @@
 }
 .wine-list > li:hover{
     cursor: pointer;
-    color: #dbaf56;
+    color: #b4f808;
 }
 .wine-item{
     text-decoration: none;

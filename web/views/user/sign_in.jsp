@@ -94,9 +94,12 @@
     });
 </script>
 <script>
-    var wrongUser = "${requestScope.wrongUser}"
+    var wrongUser = "${requestScope.wrongUser}";
+    var isExisted = "${requestScope.isExisted}";
     if(wrongUser !== ""){
         alert(wrongUser);
+    } else if(isExisted !== ""){
+        alert(isExisted);
     }
 </script>
 </body>

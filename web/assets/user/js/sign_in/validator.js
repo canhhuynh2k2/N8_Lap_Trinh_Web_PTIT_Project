@@ -56,6 +56,7 @@ function Validator(options){
                     options.onSubmit(formValues);
                 }
                 console.log("Không có lỗi");
+                formElement.submit();
             }
             else{
                 console.log("Có lỗi");

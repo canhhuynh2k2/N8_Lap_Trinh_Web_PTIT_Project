@@ -56,10 +56,12 @@ function Validator(options){
                     options.onSubmit(formValues);
                 }
                 console.log("Không có lỗi");
+                formElement.submit();
             }
             else{
                 console.log("Có lỗi");
             }
+        
         }
         //lặp qua mỗi rule để xử lý ( lắng nghe sự kiện blur, input, ...)
         options.rules.forEach(function(rule){

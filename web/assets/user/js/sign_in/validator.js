@@ -61,6 +61,7 @@ function Validator(options){
             else{
                 console.log("Có lỗi");
             }
+        
         }
         //lặp qua mỗi rule để xử lý ( lắng nghe sự kiện blur, input, ...)
         options.rules.forEach(function(rule){

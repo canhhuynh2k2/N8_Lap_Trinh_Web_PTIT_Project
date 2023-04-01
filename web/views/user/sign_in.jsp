@@ -82,25 +82,10 @@
             Validator.isRequired('#email', "Vui lòng nhập email"),
             Validator.isEmail('#email'),
             Validator.minLength('#password', 6),
+            Validator.isRequired('#password-confirmation'),
             Validator.isConfirmed("#password-confirmation", function(){
-                return document.querySelector('#form-1 #password').value;
+                return document.querySelector('#register-form #password').value;
             }, 'Mật khẩu nhập lại không chính xác')
-        ],
-        onSubmit: function(data){
-            //Call API
-                console.log(data);
-            }
-    });
-</script>
-<script>
-    Validator({
-        form : "#login-form", 
-        formGroupSelector: '.form-group',
-        errorSelector: ".form-message",
-        rules: [
-            Validator.isRequired('#email', "Vui lòng nhập email"),
-            Validator.isEmail('#email'),
-            Validator.minLength('#password', 6),
         ],
         onSubmit: function(data){
             //Call API

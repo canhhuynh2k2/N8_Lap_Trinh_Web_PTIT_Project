@@ -16,13 +16,21 @@ import model.Role;
 public class RoleDAO extends ConnectDB{
     
     //lay role theo role_id
-    public Role getRoleById(int id) throws SQLException{
+    public Role getRoleById(int role_id){
         Role role = null;
         String sql = "select * from roles where id = ?";
-        PreparedStatement statement = connection.prepareStatement(sql);
-        ResultSet rs = statement.executeQuery();
-        if(rs.next()){
-            role = new Role(id, rs.getString("name"));
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, role_id);
+            ResultSet rs = statement.executeQuery();
+            if(rs.next()){
+                role = new Role();
+                role.setId(role_id);
+                role.setName(rs.getString("name"));
+                
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
         }
         return role;
     }

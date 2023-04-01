@@ -87,7 +87,7 @@ public class UserDAO extends ConnectDB{
                 return user;
             }
         } catch (SQLException e) {
-            return null;
+            System.out.println(e);
         }
         return user;
     }
@@ -106,6 +106,11 @@ public class UserDAO extends ConnectDB{
         } catch (SQLException e) {
             return 0;
         }
+    }
+    
+    public static void main(String[] args) {
+        User user = new UserDAO().getUserByEmail("123@a.bc");
+        System.out.println(user.getFullname());
     }
     
 }

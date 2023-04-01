@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel = "stylesheet" href = "/webn8/assets/user/css/sign_in/login.css">
+    <link rel = "stylesheet" href = "/webn8/assets/user/sign_in/css/login.css">
 </head>
 <body>
     <div class="container">
@@ -70,8 +70,8 @@
             <button class="form-submit">Đăng nhập</button>
         </form>
     </div>
-<script src="/webn8/assets/js/sign_in/validator.js"></script>
-<script src = "/webn8/assets/js/sign_in/loginform.js"></script>
+<script src="/webn8/assets/user/sign_in/js/validator.js"></script>
+<script src = "/webn8/assets/user/sign_in/js/loginform.js"></script>
 <script>
     Validator({
         form : "#register-form", 

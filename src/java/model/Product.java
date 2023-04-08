@@ -18,10 +18,11 @@ public class Product {
     private String branch;
     private int capacity;
     private Double alcohol;
+    private int quantity;
     private int price;
     private int price_sale;
 
-    public Product(int id, Category category, String name, String description, String thumbnail, String unit, String branch, int capacity, Double alcohol, int price, int price_sale) {
+    public Product(int id, Category category, String name, String description, String thumbnail, String unit, String branch, int capacity, Double alcohol, int quantity, int price, int price_sale) {
         this.id = id;
         this.category = category;
         this.name = name;
@@ -31,6 +32,7 @@ public class Product {
         this.branch = branch;
         this.capacity = capacity;
         this.alcohol = alcohol;
+        this.quantity = quantity;
         this.price = price;
         this.price_sale = price_sale;
     }
@@ -107,6 +109,14 @@ public class Product {
         this.alcohol = alcohol;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public int getPrice() {
         return price;
     }
@@ -122,7 +132,7 @@ public class Product {
     public void setPrice_sale(int price_sale) {
         this.price_sale = price_sale;
     }
-    
-    
-    
+
+   
+
 }

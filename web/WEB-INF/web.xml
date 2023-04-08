@@ -2,15 +2,15 @@
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
     <servlet>
         <servlet-name>UserSignUp</servlet-name>
-        <servlet-class>controller.UserSignUp</servlet-class>
+        <servlet-class>controller.user.UserSignUp</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UserSignIn</servlet-name>
-        <servlet-class>controller.UserSignIn</servlet-class>
+        <servlet-class>controller.user.UserSignIn</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UserHome</servlet-name>
-        <servlet-class>controller.UserHome</servlet-class>
+        <servlet-class>controller.user.UserHome</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserSignUp</servlet-name>

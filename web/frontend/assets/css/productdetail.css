@@ -17,10 +17,14 @@ html{
     text-transform: uppercase;
     line-height: 45px;
     padding-left: 56px;
+    position: relative;
+    top: 162px;
 }
 .detail{
     display: flex;
     margin: 45px 45px;
+    position: relative;
+    top: 162px;
 }
 #product-img{
     height: 800px;

@@ -29,6 +29,7 @@ html{
 .main{
     display: flex;
     position: relative;
+    top: 162px;
 }
 .inside{
     flex: 1;
@@ -37,13 +38,14 @@ html{
 }
 .content{
     flex: 3;
-    border: 1px solid #000;
     width: 100%;
 }
 .nav-bar{
     width: 100%;
     height: 50px;
     background-color: blueviolet;
+    position: relative;
+    top: 162px;
 }
 .filter-heading{
     background-color: #ec1414;

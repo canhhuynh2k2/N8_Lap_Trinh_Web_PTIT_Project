@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rượu ngoại</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://kit.fontawesome.com/ddee20c3c8.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel = "stylesheet" href = "assets/css/styles.css">
+    <link rel = "stylesheet" href = "assets/css/header.css">
+    <link rel = "stylesheet" href = "assets/css/footer.css">
+</head>
+<body>
+    <div class="container">
+        <div class = "header" include-html="components/header.html"></div>
+        <div class="nav-bar"></div>
+        <div class="main">
+            <div class="inside">
+                <!-- Tìm kiếm -->
+                <div class="product-search">
+                    <p class = "filter-heading">Tìm kiếm sản phẩm</p>
+                    <form action="#" class = "product-search-form">
+                        <input type="text" class="product-search-content" placeholder="Tìm kiếm...">
+                        <i class="fa-solid fa-magnifying-glass icon-product-search"></i>
+                    </form>
+                </div>
+                <!-- Lọc theo giá -->
+                <div class="filter-by-price">
+                    <p class = "filter-heading">Lọc theo khoảng giá</p>
+                    <form action="#" class = "filter-by-price-form">
+                        <div class="circlecheck">
+                            <input type="radio" id="option-1" class="circle-1" name="price-range" checked value="0">
+                            <label for="option-1">Tất cả</label>
+                        </div>
+                        <div class="circlecheck">
+                            <input type="radio" id="option-2" class="circle-2" name="price-range" value="1">
+                            <label for="option-2">Dưới 5 triệu</label>
+                        </div>
+                        <div class="circlecheck">
+                            <input type="radio" id="option-3" class="circle-3" name="price-range" value="2">
+                            <label for="option-3">Từ 5 triệu - 10 triệu</label>
+                        </div>
+                        <div class="circlecheck">
+                            <input type="radio" id="option-3" class="circle-4" name="price-range" value="3">
+                            <label for="option-4">Từ 10 triệu - 20 triệu</label>
+                        </div>
+                        <div class="circlecheck">
+                            <input type="radio" id="option-3" class="circle-5" name="price-range" value="4">
+                            <label for="option-5">Trên 20 triệu</label>
+                        </div>
+                        
+                    </form>
+                </div>
+                <!-- Lọc theo thương hiệu -->
+                <div class="filter-by-branch">
+                    <p class = "filter-heading">Lọc theo thương hiệu</p>
+                    <form action="#" class = "filter-by-branch-form">
+                        <select name="" id="branch">
+                            <option value="0">Tất cả</option>
+                            <!-- Lấy các thương hiệu từ database để hiển thị option
+                                - Số lượng option phụ thuộc vào navigation hiện tại -->
+                        </select>
+                    </form>
+                </div>
+                <div class="filter-by-alcohol-level">
+                    <p class = "filter-heading">Lọc theo nồng độ</p>
+                    <form action="#" class = "filter-by-alcohol-level-form">
+                        <select name="" id="alcohol-level">
+                            <option value="0">Tất cả</option>
+                            <option value="1">Dưới 10%</option>
+                            <option value="2">Từ 10% - 20%</option>
+                            <option value="3">Từ 20% - 30%</option>
+                            <option value="4">Từ 30% - 40%</option>
+                            <option value="5">Trên 40%</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="filter-by-capacity">
+                    <p class = "filter-heading">Lọc theo dung tích</p>
+                    <form action="#" class = "filter-by-capacity-form">
+                        <select name="" id="capacity">
+                            <option value="0">Tất cả</option>
+                            <!-- Lấy các tất cả các dung tích từ database để hiển thị option
+                                - Số lượng option phụ thuộc vào navigation hiện tại -->
+                        </select>
+                    </form>
+                </div>
+                <div class="filter">
+                    <button class="clear-btn">Reset</button>
+                    <button class="filter-btn">Lọc</button>
+                </div>
+            </div>
+            <div class="content">
+                <header><h2 class ="heading-product">Đây là Tên loại rượu click theo đường dẫn</h2></header>
+                <div class="product-sort">
+                    <form action="" class="product-sort__form">
+                        <label for="">Sắp xếp:</label>
+                        <select name="" id="sorted-list">
+                            <option value="1" class="">Theo tên sản phẩm A-Z</option>
+                            <option value="2" class="">Theo tên sản phẩm Z-A</option>
+                            <option value="3" class="">Theo giá từ thấp đến cao</option>
+                            <option value="4" class="">Theo giá từ cao đến thấp</option>
+                            <option value="5" class="">Theo dung tích từ thấp đến cao</option>
+                            <option value="6" class="">Theo dung tích từ cao đến thấp</option>
+                        </select>
+                    </form>
+                </div>
+                <ul class="product-list">
+                    
+                    <li class="product-item">
+                        <a href="#">
+                            <img src="assets/images/header/logo.PNG" alt="" class="img-product">
+                            <h3 class = "product-name">Tên sản phẩm</h3>
+                            <p class="initial-price">Giá gốc: <del>1.530.000</del></p>
+                            <p class="sale-price">Giá bán: 1.390.000</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class = "footer" include-html="components/footer.html"></div>
+    </div>
+    <script src="assets/js/general.js"></script>
+</body>
+</html>

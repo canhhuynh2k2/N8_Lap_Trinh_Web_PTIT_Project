@@ -2,6 +2,8 @@
 .footer__advantage{
     display: flex;
     background-color: #e5a77d;
+    position: relative;
+    top: 210px;
 }
 .advantage-item{
     flex: 1;
@@ -16,7 +18,9 @@
 /* footer__content */
 .footer__content{
     background-color: #ecdada;
-    height: 270px
+    height: 270px;
+    position: relative;
+    top: 210px;
 }
 .footer-content-list{
     display: flex;
@@ -49,6 +53,8 @@
     height: 120px;
     text-align: center;
     background-color: rgb(112, 57, 57);
+    position: relative;
+    top: 210px;
 }
 .copyright-item{
     color: #fff;

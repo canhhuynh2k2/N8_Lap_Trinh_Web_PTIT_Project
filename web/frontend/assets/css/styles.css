@@ -171,3 +171,17 @@ html{
 .sale-price{
     color:#085302;
 }
+.page-product{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.page{
+    margin: 16px 6px;
+    padding: 6px 12px;
+    text-decoration: none;
+    font-size: 20px;
+    background-color: #085302;
+    color: #fff;
+}

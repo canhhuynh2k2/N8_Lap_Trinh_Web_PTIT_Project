@@ -28,6 +28,8 @@ html{
 }
 .main-content{
     display: flex;
+    position: relative;
+    top: 100px;
 }
 
 #form-contact{
@@ -50,7 +52,7 @@ html{
 .form-group{
     display: flex;
     flex-direction: column;
-    flex-basis: 46%;
+    flex-basis: 45.2%;
     margin: 0px 16px;
     padding: 6px 16px;
 }

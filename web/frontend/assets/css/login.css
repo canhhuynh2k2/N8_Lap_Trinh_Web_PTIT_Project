@@ -7,32 +7,18 @@ html{
     box-sizing: inherit;
     font-family: 'Roboto', sans-serif;
 }
-.disable{
-    display: none;
-}
+
 .container{
     width: 450px;
     font-size: 18px;
-    margin: 24px auto;
+    margin: 75px auto;
     border: 1px solid #bc76da;
 }
-.login-register{
-    display: flex;
-}
-.login-register-btn{
-    flex: 1;
-    height: 55px;
-    background-color: #fff;
-    font-size: 22px;
-}
-
-.login-btn{
-    background-color: #41da74;
-    font-weight: 550;
-}
-.register-btn{
-    background-color: #edd069;
-    font-weight: 550;
+#login-form > h3{
+    font-size: 30px;
+    color:#3c8052;
+    margin: 18px 0;
+    text-transform: uppercase;
 }
 
 /* form */
@@ -57,20 +43,21 @@ html{
     padding-left: 12px;
 }
 .form-message{
-    margin: auto 16px;
+    margin: auto 26px;
     font-size: 14px;
     font-size: 16px;
 }
-.form-submit{
+.login-btn{
     background-color: rgb(99, 45, 209);
     padding: 12px 40px;
     height: 45px;
     border: none;
-    margin: 12px auto;
+    margin: 24px auto;
     display: flex;
     color: #fff;
     font-size: 18px;
     border-radius: 99px;
+    font-weight: 550;
 }
 
 .form-group > input{
@@ -80,11 +67,19 @@ html{
 #password-forgot{
     margin: 0 26px;
 }
+#register-account{
+    margin-left: 60px;
+    color: #19924b;
+}
+#register-account:hover, #password-forgot:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
 .invalid{
     color: red;
 }
 
-.login-btn:hover, .register-btn:hover, .form-submit:hover{
+.login-btn:hover{
     cursor: pointer;
     opacity: 0.8;
 }

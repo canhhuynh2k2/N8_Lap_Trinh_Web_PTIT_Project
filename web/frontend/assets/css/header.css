@@ -166,6 +166,23 @@
     position: absolute;
     display: block;
 }
+
+.cart-count{
+    position: absolute;
+    background-color: #e3a168;
+    border-radius: 50%;
+    border: 2px solid #c93328;
+    min-width: 20px;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 15px;
+    margin-top: -37px;
+    z-index: 9;
+    font-size: 12px;
+}
 @keyframes GrowUp {
     from{
         transform: translateY(20%);

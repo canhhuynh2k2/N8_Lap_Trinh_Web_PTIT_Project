@@ -1,0 +1,117 @@
+*{
+    padding: 0 0;
+    margin: 0 0;
+    box-sizing: border-box;
+}
+
+html{
+    box-sizing: inherit;
+    font-family: 'Roboto', sans-serif;
+    background-color: #fff;
+} 
+.invalid{
+    display: none;
+}
+.main{
+    position: relative;
+    top: 178px;
+    margin: 32px 32px;
+    width: 94%;
+    
+}
+.product-list-cart{
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 550;
+    background-color: antiquewhite;
+}
+.product-list-subject{
+    width: 100%;
+    margin: 16px 8px;
+    list-style-type: none;
+    text-transform: uppercase;
+}
+.product-subject{
+    padding: 12px 12px;
+    background-color: #e6c3c3;
+}
+.product-item > td{
+    border-bottom: 3px solid rgba(0,0,0,.1);
+}
+.is-devider{
+    height: 3px;
+    display: block;
+    background-color: rgba(0,0,0,.1);
+    width: 100%;
+    /* max-width: 2500px; */
+    margin: 12px 0;
+}
+.product-title{
+    display: flex;
+}
+.delete-btn{
+    line-height: 200px;
+    margin-left: 12px;
+}
+.delete-btn:hover{
+    color: red;
+    cursor: pointer;
+}
+.product-link{
+    display: flex;
+    text-align: center;
+    text-decoration: none;
+    margin: auto 12px;
+}
+
+.product-image{
+    max-width: 150px;
+    max-height: 200px;
+    margin: auto 0;
+    padding: 8px 8px;
+}
+.input-qty{
+    text-align: center;
+    padding: 0 auto;
+    width: 36px;
+    height: 24px;
+}
+.minus, .plus{
+    padding: 0 6px;
+    text-decoration: none;
+    background-color: rgb(173, 177, 164);
+    color: #fff;
+
+}
+.minus:hover, .plus:hover{
+    cursor: pointer;
+    color:#cfcf27;
+}
+.product-name{
+    line-height: 200px;
+}
+.payment-form{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: end;
+    
+}
+#payment-btn{
+    color: #fff;
+    background-color: #bb1515;
+    width: 20%;
+    padding: 8px 12px;
+    margin-right: 32px;
+    border: none;
+    font-weight: 550;
+    font-size: 22px;
+}
+#payment-btn:hover{
+    cursor: pointer;
+}
+.price-total{
+    margin: 16px 0;
+    margin-right: 32px;
+}

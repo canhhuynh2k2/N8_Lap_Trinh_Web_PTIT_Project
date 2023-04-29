@@ -95,7 +95,7 @@ html{
 }
 .customer-note{
     font-size: 18px;
-    margin-top: 32px;
+    margin: 32px 28px;
 }
 .checkout-sidebar{
     width: 100%;
@@ -118,6 +118,7 @@ html{
 }
 .checkout-review-order-table{
     margin: 12px 28px;
+    width: 90%;
 }
 .product-total-heading{
     text-transform: uppercase;
@@ -198,4 +199,7 @@ tfoot > tr > td, tfoot > tr > th{
 #pay-btn:hover{
     cursor: pointer;
     opacity: 0.6;
+}
+.invalid{
+    display: none;
 }

@@ -1,0 +1,38 @@
+*{
+    margin: 0 0;
+    padding: 0 0;
+    box-sizing: border-box;
+}
+html{
+    box-sizing: inherit;
+    font-family: 'Roboto', sans-serif;
+}
+
+.main{
+    position: relative;
+    top: 167px;
+}
+.order-notice-success{
+    background-color: #efe1e1;
+    display: flex;
+    flex-direction: column;
+    margin: 32px auto;
+    width: 50%;
+    box-shadow: 2px 2px 2px #439ac5;
+}
+.notice-heading{
+    margin: 18px auto;
+    font-size: 28px;
+    color:#203616;
+}
+.success-icon{
+    font-size: 65px;
+    margin: 24px auto;
+    color: #365b25;
+}
+.order-info > li{
+    padding: 12px 12px;
+    margin: 0 85px;
+    font-size: 18px;
+    font-weight: 550;
+}

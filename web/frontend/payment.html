@@ -117,7 +117,7 @@
                     <div class="form-group">
                         <label for="customer-name">Tên *</label>
                         <input type="text" id = "customer-name" placeholder="Họ và tên">
-                        <p class="form-message"></p>
+                        <span class="form-message"></span>
                     </div>
                     <div class="form-group">
                         <label for="customer-address">Địa chỉ *</label>
@@ -142,7 +142,7 @@
                         <textarea name = "order-comment" id = "order-comment" placeholder="Ghi chú về đơn hàng, ví dụ: thời gian hay chỉ dẫn địa điểm giao hàng chi tiết hơn."></textarea>
                         
                     </div>
-                    <p class = "customer-note">Đơn hàng giao đi Tỉnh Quý khách hàng vui lòng liên hệ qua <strong style = "color : red">Zalo 0988.051.415</strong> và vui lòng <span style="color:blue">chuyển khoản trước </span>sau khi trao đổi việc lấy hàng thành công</p>
+
                 </div>
             </div>
             <div class="order-details">
@@ -151,7 +151,7 @@
                     <table class="checkout-review-order-table">
                         <thead>
                             <th class = "product-name-heading">Sản phẩm</th>
-                            <th class="product-total-heading">Tạm tính</th>
+                            <th class = "product-total-heading">Tạm tính</th>
                         </thead>
                         <tbody>
 
@@ -181,18 +181,7 @@
                             </tr>
                         </tfoot>
                     </table>
-                    <ul class = "payment-methods">
-                        <li class = "payment-method-bacs">
-                            <input type="radio" id = "payment-method-bacs" name="payment_method" value="bacs" checked = "checked">
-                            <label for="payment-method-bacs">Chuyển khoản ngân hàng</label>
-                            <div class = "payment-box payment-method-cod"><p>Thực hiện thanh toán vào ngay tài khoản ngân hàng của chúng tôi. Vui lòng sử dụng Mã đơn hàng của bạn trong phần Nội dung thanh toán. Đơn hàng sẽ đươc giao sau khi tiền đã chuyển.</p></div>
-                        </li>
-                        <li class = "payment-method-cod">
-                            <input type="radio" id = "payment-method-cod" name="payment_method" value="cod">
-                            <label for="payment-method-cod">Trả tiền mặt khi nhận hàng</label>
-                            <div class="payment-box payment-method-cod invalid"><p>Trả tiền mặt khi giao hàng.</p></div>
-                        </li>
-                    </ul>
+                    <p class = "customer-note">Vui lòng nhập đúng <span style = "color: blue">số điện thoại</span> của bạn, chúng tôi sẽ liên hệ với bạn để trao đổi về việc giao hàng</p>
                     <input type="submit" id = "pay-btn" value = "ĐẶT HÀNG">
                 </div>
             </div>
@@ -275,7 +264,6 @@
         </div>
     </footer>  
     <script src = "assets/js/payment.js"></script>
-    <script src = "assets/js/validator.js"></script>
     
     <script>
         Validator({
@@ -287,13 +275,13 @@
                 Validator.isRequired('#customer-email', "Vui lòng nhập email"),
                 Validator.isRequired('#customer-phonenumber', "Vui lòng nhập số điện thoại"),
                 Validator.isRequired('#customer-address', "Vui lòng nhập địa chỉ của bạn"),
-                Validator.isEmail('#customer-email'),
+                Validator.isEmail('#customer-email')
                 
             ]
 
         });
     </script>
-    </script>
+
     
 </body>
 </html>

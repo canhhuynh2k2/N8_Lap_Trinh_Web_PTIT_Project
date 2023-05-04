@@ -12,12 +12,15 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import java.util.List;
+import model.Cart;
+import model.Item;
 
 /**
  *
  * @author Bach
  */
-public class UserHome extends HttpServlet {
+public class UserProfile extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -34,10 +37,10 @@ public class UserHome extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UserHome</title>");  
+            out.println("<title>Servlet UserProfile</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UserHome at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet UserProfile at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -54,11 +57,20 @@ public class UserHome extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        String cookieTxt = "1&2";
-        Cookie cookie = new Cookie("cart", cookieTxt);
-        cookie.setMaxAge(7*60*60);
-        response.addCookie(cookie);
-        request.getRequestDispatcher("views/user/home.jsp").forward(request, response);
+        Cookie[] cookies = request.getCookies();
+        String cookieTxt = "";
+        if(cookies != null){
+            for(Cookie cookie : cookies){
+                if(cookie.getName().equals("cart")){
+                    cookieTxt += cookie.getValue();
+                }
+            }
+        }
+        Cart cart = new Cart(cookieTxt);
+        List<Item> items = cart.getItems();
+        request.setAttribute("cart", cart);
+        request.setAttribute("items", items);
+        request.getRequestDispatcher("views/user/profile.jsp").forward(request, response);
     } 
 
     /** 

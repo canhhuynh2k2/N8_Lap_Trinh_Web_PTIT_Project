@@ -12,6 +12,26 @@
         <servlet-name>UserHome</servlet-name>
         <servlet-class>controller.user.UserHome</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserCart</servlet-name>
+        <servlet-class>controller.user.UserCart</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserCartCheckQuantity</servlet-name>
+        <servlet-class>controller.user.UserCartCheckQuantity</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserProfile</servlet-name>
+        <servlet-class>controller.user.UserProfile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserChangePassword</servlet-name>
+        <servlet-class>controller.user.UserChangePassword</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserSignOut</servlet-name>
+        <servlet-class>controller.user.UserSignOut</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserSignUp</servlet-name>
         <url-pattern>/user_sign_up</url-pattern>
@@ -23,6 +43,26 @@
     <servlet-mapping>
         <servlet-name>UserHome</servlet-name>
         <url-pattern>/user_home</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserCart</servlet-name>
+        <url-pattern>/user_cart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserCartCheckQuantity</servlet-name>
+        <url-pattern>/user_cart_check_quantity</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserProfile</servlet-name>
+        <url-pattern>/user_profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserChangePassword</servlet-name>
+        <url-pattern>/user_change_password</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserSignOut</servlet-name>
+        <url-pattern>/user_sign_out</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

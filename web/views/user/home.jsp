@@ -17,5 +17,6 @@
         <h2>Hello ${sessionScope.user.fullname}</h2>
         <h2>${requestScope.isExisted}</h2>
         <h2>${sessionScope.user.email}</h2>
+        <a href="user_sign_out">Dang Xuat</a>
     </body>
 </html>

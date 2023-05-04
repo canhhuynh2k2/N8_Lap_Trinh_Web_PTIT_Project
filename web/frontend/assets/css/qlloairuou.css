@@ -1,0 +1,251 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* BEGIN SIDEBAR */
+
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 230px;
+    background-color: rgb(32,33,33);
+}
+
+.sidebar .logo {
+    display: flex;
+    line-height: 64px;
+    width: 230px;
+    padding: 0 10px;
+}
+
+.sidebar .logo i,
+.sidebar .logo p{
+    color: rgb(255, 255, 255);
+    line-height: 64px;
+    text-align: center;
+    font-size: 26.5px;
+    font-weight: 400;
+    align-items: center;
+}
+
+.sidebar-menu {
+    margin-top: 24px;
+    width: 100%;
+    height: 100%;
+    /* display: flex; */
+}
+
+
+.sidebar-menu a{
+    color: rgb(255,255,255);
+    text-decoration: none;
+    display: flex;
+}
+
+.sidebar-menu .menu {
+    display: flex;
+}
+
+.sidebar-menu .menu {
+    height: 46px;
+    width: 100%;
+    padding-left: 18px;
+    box-sizing: border-box;
+    align-items: center;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.sidebar-menu .qlloairuou {
+    background-color: rgb(104,174,0);
+}
+
+.sidebar-menu .menu p {
+    margin-left: 11px;
+}
+
+/* BEGIN HEADER */
+
+.header {
+    position: fixed;
+    top: 0;
+    height: 64px;
+    right: 0;
+    left: 230px;
+    background-color: rgb(255,255,255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+.header-menu {
+    line-height: 64px;
+    text-align: center;
+    width: 40px;
+    float: left;
+    list-style: none;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.header .nav {
+    float: right;
+    display: flex;
+}
+
+.header .navbar {
+    line-height: 64px;
+    text-align: center;
+    width: 148px;
+    margin-right: 18px;
+    /* background-color: coral; */
+}
+
+.header .navbar ul{
+    display: flex;
+    list-style: none; 
+}
+
+.header .navbar a{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    color: rgb(111,111,111);
+}
+
+.header .navbar li {
+    width: 33.3333%;
+}
+
+.header .user {
+    display: flex;
+    text-align: center;
+    line-height: 64px;
+    margin-right: 20px;
+}
+
+.header .user {
+
+}
+.header .user img {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: 12px;
+    margin-right: 6px;
+}
+
+.header .user i {
+    margin-top: 24px;
+    margin-left: 6px;
+}
+
+/* BEGIN INNER-BLOCK */
+
+.content-wrapper {
+    min-height: 1016px;
+    margin-left: 230px;
+    margin-right: 0;
+    background-color: rgb(250,250,250);
+    /* background-color: black; */
+}
+
+.content-header {
+    display: flex;
+    box-sizing: border-box;
+    margin-top: 64px;
+    background-color: rgb(250,250,250);
+
+    padding: 20px 20px 0 20px;
+}
+
+.content-header >h4 {
+    font-size: 20px;
+    line-height: 36px;
+    display: block;
+    width: 828px;
+    color: rgb(51, 51, 51);
+}
+
+.content-header .breadcrumb {
+    line-height: 36px;
+}
+
+.content-header .breadcrumb a,
+.content-header .breadcrumb i {
+    text-decoration: none;
+    color: rgb(68,68,68);
+}
+
+.timkiemsp {
+    margin-top: 28px;
+    margin-left: 64%;
+    width: 256px;
+    height: 36px;
+    display: flex;
+}
+
+.timkiemsp input {
+    height: 100%;
+    width: 90%;
+    border-right: none;
+}
+
+.timkiem {
+    height: 100%;
+    width: 10%;
+}
+
+.timkiem .search-btn {
+    background-color: coral;
+    border-left: none;
+    padding-left: 5px;
+}
+
+.timkiem i {
+    font-size: 20px;
+    line-height: 33px;
+    color: #fff;
+}
+
+.table-bordered, th, td {
+    border: 1px solid #000;
+    height: 80px;
+}
+
+th, td {
+    padding: 0.75rem;
+}
+
+.table {
+    margin-top: 56px;
+    margin-left: 30px;
+    width: 1200px;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    border-collapse: collapse;
+    text-align: center;
+    
+}
+.table td a {
+    text-decoration: none;
+}
+
+.tbDanhSachSP a:hover {
+    color: cornflowerblue;
+}
+
+.themsp {
+    padding: 6px;
+    background-color: rgb(51,122,183);
+    color: rgb(255,255,255);
+    border: none;
+    font-size: 18px;
+    margin-left: 50%;
+    margin-top: 30px;
+}
+
+

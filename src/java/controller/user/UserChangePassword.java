@@ -9,17 +9,21 @@ import extension.Encrypt;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.List;
+import model.Cart;
+import model.Item;
 import model.User;
 
 /**
  *
  * @author Bach
  */
-public class UserSignUp extends HttpServlet {
+public class UserChangePassword extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +42,10 @@ public class UserSignUp extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UserSignUp</title>");
+            out.println("<title>Servlet UserChangePassword</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UserSignUp at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UserChangePassword at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +63,23 @@ public class UserSignUp extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("views/user/sign_up.jsp").forward(request, response);
+        //cookie
+        Cookie[] cookies = request.getCookies();
+        String cookieTxt = "";
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("cart")) {
+                    cookieTxt += cookie.getValue();
+                }
+            }
+        }
+        Cart cart = new Cart(cookieTxt);
+        List<Item> items = cart.getItems();
+
+        request.setAttribute("cart", cart);
+        request.setAttribute("items", items);
+
+        request.getRequestDispatcher("views/user/change_password.jsp").forward(request, response);
     }
 
     /**
@@ -73,25 +93,28 @@ public class UserSignUp extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String fullname = request.getParameter("fullname");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        //ma hoa mat khau
-        String passWordEncrypt = Encrypt.toSHA1(password);
-        User userRaw = new User();
-        userRaw.setFullname(fullname);
-        userRaw.setEmail(email);
-        userRaw.setPassword(passWordEncrypt);
-        UserDAO userDB = new UserDAO();
-        if (userDB.isExisted(userRaw)) {
-            request.setAttribute("isExisted", "Email Đã Tồn Tại");
-            request.getRequestDispatcher("views/user/sign_up.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        String oldPassword = request.getParameter("old_password");
+        String newPassword = request.getParameter("password");
+        String oldPasswordEncrypt = Encrypt.toSHA1(oldPassword);
+        String newPasswordEncrypt = Encrypt.toSHA1(newPassword);
+        if (user.getPassword().equals(oldPasswordEncrypt)) {
+            user.setPassword(newPasswordEncrypt);
+            UserDAO userDB = new UserDAO();
+            int result = userDB.updateUser(user);
+            if (result == 1) {
+                session.removeAttribute("user");
+                session.setAttribute("user", user);
+                request.setAttribute("changePasswordSuccess", "Thay Đổi Mật Khẩu Thành Công");
+                request.getRequestDispatcher("views/user/profile.jsp").forward(request, response);
+            } else {
+                request.setAttribute("changePasswordError", "Đã Xảy Ra Lỗi Vui Lòng Thử Lại");
+                request.getRequestDispatcher("views/user/change_password.jsp").forward(request, response);
+            }
         } else {
-            userDB.addUser(userRaw);
-            User user = userDB.getUserByEmail(email);
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-            response.sendRedirect("user_home");
+            request.setAttribute("wrongOldPassword", "Mật Khẩu Cũ Không Đúng");
+            request.getRequestDispatcher("views/user/change_password.jsp").forward(request, response);
         }
     }
 

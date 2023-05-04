@@ -1,0 +1,69 @@
+/* advantage */
+.footer__advantage{
+    display: flex;
+    background-color: #e5a77d;
+    position: relative;
+    top: 210px;
+}
+.advantage-item{
+    flex: 1;
+    margin: 18px 66px;
+}
+.advantage-icon{
+    font-size: 52px;
+    justify-content: center;
+    padding-bottom: 12px;
+}
+
+/* footer__content */
+.footer__content{
+    background-color: #ecdada;
+    height: 270px;
+    position: relative;
+    top: 210px;
+}
+.footer-content-list{
+    display: flex;
+    margin: 1px 40px;
+}
+.footer-content-item{
+    flex: 1;
+    padding-top: 18px;
+    justify-content: space-around;
+    text-align: center;
+}
+.footer__content li{
+    list-style-type: none;
+    text-align: left;
+    height: 36px;
+}
+.footer__content a{
+    text-decoration: none;
+    padding: 6px auto;
+}
+.footer__content a:hover{
+    color: #d60d0d;
+}
+.footer-content-item > ul{
+    margin-top: 24px;
+}
+
+/* copyright */
+.copyright{
+    height: 120px;
+    text-align: center;
+    background-color: rgb(112, 57, 57);
+    position: relative;
+    top: 210px;
+}
+.copyright-item{
+    color: #fff;
+    padding-top: 12px;
+}
+.icon-contact:hover{
+    cursor: pointer;
+}
+.icon-contact{
+    font-size: 36px;
+    margin: 12px 12px;
+}

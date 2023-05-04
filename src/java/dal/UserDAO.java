@@ -52,13 +52,12 @@ public class UserDAO extends ConnectDB{
     
     //them tai khoan
     public int addUser(User user){
-        String sql = "insert into users (fullname, phone_number, email, password) values (?, ?, ?, ?)";
+        String sql = "insert into users (fullname, email, password) values (?, ?, ?)";
         try {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, user.getFullname());
-            statement.setString(2, user.getPhoneNumber());
-            statement.setString(3, user.getEmail());
-            statement.setString(4, user.getPassword());
+            statement.setString(2, user.getEmail());
+            statement.setString(3, user.getPassword());
             return statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println(e);
@@ -108,9 +107,5 @@ public class UserDAO extends ConnectDB{
         }
     }
     
-    public static void main(String[] args) {
-        User user = new UserDAO().getUserByEmail("123@a.bc");
-        System.out.println(user.getFullname());
-    }
     
 }

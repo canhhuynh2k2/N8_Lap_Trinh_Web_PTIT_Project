@@ -84,7 +84,7 @@ public class HomeServlet extends HttpServlet {
         
         request.setAttribute("categories", categories);
         request.setAttribute("branchesmap", branchesMap);
-        request.getRequestDispatcher("./views/user/home2.jsp").forward(request, response);
+        request.getRequestDispatcher("./views/user/home.jsp").forward(request, response);
     }
 
     /**

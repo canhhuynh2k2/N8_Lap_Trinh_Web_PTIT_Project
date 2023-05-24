@@ -22,6 +22,10 @@ public class Product {
     private int price;
     private int price_sale;
 
+    public Product(){
+        
+    }
+    
     public Product(int id, Category category, String name, String description, String thumbnail, String unit, String branch, int capacity, Double alcohol, int quantity, int price, int price_sale) {
         this.id = id;
         this.category = category;

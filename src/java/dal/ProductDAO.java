@@ -67,6 +67,38 @@ public class ProductDAO extends ConnectDB{
         return null;
     }
     
+     public List<Product> getByCatId(int category_id){
+        String query = "select * "+               
+                 " from products WHERE category_id = " + category_id + " ;";
+        try {
+            PreparedStatement prepare = connection.prepareStatement(query);
+            prepare.execute();
+            
+            ResultSet resultSet = prepare.getResultSet();
+            List<Product> products = new ArrayList<>();
+            while(resultSet.next()){
+                Product product = new Product();
+                product.setId(resultSet.getInt("id"));
+                product.setName(resultSet.getString("name"));
+                product.setDescription(resultSet.getString("description"));
+                product.setThumbnail( resultSet.getString("thumbnail"));
+                product.setUnit(resultSet.getString("unit"));
+                product.setBranch(resultSet.getString("branch"));
+                product.setCapacity(resultSet.getInt("capacity"));
+                product.setAlcohol(resultSet.getDouble("alcohol"));
+                product.setQuantity( resultSet.getInt("quantity"));
+                product.setPrice(resultSet.getInt("price"));
+                product.setPrice_sale(resultSet.getInt("price_sale"));
+               products.add(product);
+            }
+            return products;
+        } catch (SQLException ex) {
+            System.err.println(ex);
+        }
+        
+        return null;
+    }
+     
 //   catId, priceOption, branchOption, alcoholOption, capacityOption
     public List<Product> search(int category_id, int priceOption, String branchOption, int alcoholOption, int capacityOption, int sortOption, String searchName){
         

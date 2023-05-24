@@ -1,0 +1,139 @@
+*{
+    padding: 0 0;
+    margin: 0 0;
+    box-sizing: border-box;
+}
+
+html{
+    box-sizing: inherit;
+    font-family: 'Roboto', sans-serif;
+} 
+
+.header-nav{
+    height: 45px;
+    background-color: #694f97;
+    color: #fff;
+    font-size: 22px;
+    text-transform: uppercase;
+    line-height: 45px;
+    padding-left: 56px;
+    position: relative;
+    top: 162px;
+}
+.detail{
+    display: flex;
+    margin: 45px 45px;
+    position: relative;
+    top: 162px;
+}
+#product-img{
+    height: 800px;
+    width: 650px;
+}
+.detail-img{
+    margin-left: 100px;
+}
+
+.product-detail-content{
+    margin-right: 100px;
+    padding: 0 36px;
+}
+.product-detail-content > h1{
+    font-size: 40spx;
+}
+.product-detail-content > h3{
+    font-size: 20px;
+    margin: 8px 0;
+    color: #4a23a4;
+}
+#price{
+    font-size: 22px;
+    color: red;
+    padding: 8px 0;
+}
+#sale{
+    font-size: 25px;
+    color: #155643;
+}
+.is-devider{
+    height: 3px;
+    display: block;
+    background-color: rgba(0,0,0,.1);
+    width: 100%;
+    max-width: 100px;
+    margin: 12px 0;
+}
+#detail-table tr:nth-child(even){
+    background-color: #eee;
+}
+#detail-table tr:nth-child(odd){
+    background-color: #edf1ea;
+}
+#detail-table td{
+    font-size: 20px;
+    padding: 4px 12px;
+    width: 250px;
+    height: 38px;
+}
+
+.remain-quantity{
+    margin: 16px 0;
+    font-size: 18px;
+}
+
+.buttons_added{
+    margin: 28px 14px;
+}
+
+.minus, .plus{
+    width: 30px;
+    height: 36px;
+    font-size: 20px;
+}
+.input-qty{
+    width: 100%;
+    max-width:45px;
+    height: 36px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 510;
+}
+#quantity{
+    font-size: 18px;
+    font-weight: 510;
+}
+
+#add-to-cart{
+    padding: 14px 18px;
+    color: #fff;
+    background-color: #e81414;
+    border-radius: 99px 99px 99px 99px;
+    border: none;
+    margin: 0 auto;
+    font-size: 25px;
+    text-transform: uppercase;
+    width: 330px;
+    margin-left: 80px;
+}
+
+#add-to-cart:hover{
+    cursor: pointer;
+}
+
+#buy-now{
+    padding: 14px 18px;
+    color: #fff;
+    background-color: #e81414;
+    border-radius: 99px 99px 99px 99px;
+    border: none;
+    margin: 0 auto;
+    font-size: 25px;
+    text-transform: uppercase;
+    width: 330px;
+    margin: 24px 80px;
+}
+
+#buy-now:hover{
+    cursor: pointer;
+}
+

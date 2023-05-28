@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.*,java.util.List,java.util.ArrayList,model.Category,model.Product,java.util.Map" %>
+<%@ page import = "java.util.*,java.util.List,java.util.ArrayList,model.Category,model.Product,java.util.Map,jakarta.servlet.http.Cookie" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -73,7 +73,15 @@
                 </ul>
                 <ul class = "header__nav-btn">
                     <li class="header__nav-item user-btn -display-inline"><i class="fa-solid fa-user"></i></li>
-                    <li class = "header__nav-item -display-inline"><i class="fa-solid fa-cart-shopping"></i></li>
+                    <% Cookie[] cart = request.getCookies();
+                        int num = 0;
+                        for(Cookie cookie : cart){
+                            if(cookie.getName().equals("cart")){
+                                num = cookie.getValue().split("_").length;
+                            }
+                        }
+                    %>
+                    <li class = "header__nav-item -display-inline"><a href = "http://localhost:8080/webn8/cart"><i class="fa-solid fa-cart-shopping"></i><div class="cart-count"><%= num%></div></a></li>
 
                 </ul>
 
@@ -117,19 +125,20 @@
                             <td><%=product.getDescription()%></td>
                         </tr>
                     </table>
-                    <form action="#">
+                    <div>
                         <div class = "remain-quantity">
                             <strong>Số lượng còn lại: <span id = "max-quantity"><%=product.getQuantity()%></span></strong>
                         </div>
                         <div class="buttons_added">
                             <label for="" id = "quantity">Số lượng: </label>
                             <input class="minus" type="button" value="-">
-                            <input class="input-qty" max="" min="1" name="" type="number" value="1" >
+                            <input class="input-qty" max="" min="1" name="quantity" type="number" value="1" >
                             <input class="plus" type="button" value="+">
                         </div>
-                        <button id = "add-to-cart"><strong>Thêm vào giỏ hàng</strong></button><br/>
-                        <button id = "buy-now"><strong>Mua ngay</strong></button>
-                    </form>
+                        <a href ="addtocart?id=<%=product.getId()%>&quantity=1" class = "add-to-card-btn"><button id = "add-to-cart"><strong>Thêm vào giỏ hàng</strong></button><br/></a>
+                    
+                        <input type ="submit" id = "buy-now" value = "Mua ngay">
+                    </div>
 
 
                 </div>
@@ -211,6 +220,7 @@
                 <p class = "copyright-item">©Copyright Nhóm 8 LTWeb PTIT 2023</p>
             </div>
         </footer>  
-        <script src = "./assets/user/js/productdetail.js"></script>
+        <script src = "./assets/user/product_detail/productdetail.js"></script>
+      
     </body>
 </html>

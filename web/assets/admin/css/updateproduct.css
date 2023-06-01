@@ -183,7 +183,7 @@
     padding-bottom: 20px;
 }
 
-.content .form_row{
+.content .form-row{
     display: flex;
     margin: auto;
     margin-top: 30px;
@@ -191,12 +191,12 @@
     max-width: 800px;
 }
 
-.content .form_label{
+.content .form-label{
     font-size: 20px;
     min-width: 200px;
 }
 
-.content .form_input{
+.content .form-input{
     font-size: 20px;
     flex: 1;
 }

@@ -61,7 +61,7 @@
     font-weight: 400;
 }
 
-.sidebar-menu .qlwine {
+.sidebar-menu .qlloairuou {
     background-color: rgb(104,174,0);
 }
 
@@ -168,7 +168,6 @@
     display: block;
     width: 828px;
     color: rgb(51, 51, 51);
-    flex-direction: ;
 }
 
 .content-header .breadcrumb {

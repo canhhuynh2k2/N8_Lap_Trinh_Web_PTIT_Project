@@ -12,7 +12,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./assets/admin/css/showproduct.css">
+        <link rel="stylesheet" href="./assets/admin/css/showcategory.css">
         <link rel="stylesheet" href="./assets/admin/icon/themify-icons/themify-icons.css">
         <title>Ruoungoai</title>
     </head>
@@ -92,6 +92,7 @@
                     <i class="ti-menu"></i>
                 </div>
                 <div class="nav">
+                   
                     <div class="user">
                         <img src="./assets/img/avt1.jpg" alt="">
                         <p>Nguyễn Văn A</p>
@@ -105,18 +106,18 @@
             <div class="content-wrapper">
                 <div class="content-header">
                     
-                    <h4>Quản lí rượu</h4>
+                    <h4>Quản lí loại rượu</h4>
                     <div class="breadcrumb">
                         <i class="ti-home"> Trang Chủ</i>
                         <i class="ti-angle-right"></i>
-                        <a href="#"> Quản Lí Rượu <i class="ti-angle-right"></i></a>
+                        <a href="#"> Quản Lí Loại Rượu <i class="ti-angle-right"></i></a>
                         <!--<a href="#">Cập Nhật Sản Phẩm</a>-->
                     </div>
                 </div>
 
-                <div class = "addbtn-container" >
+                <div class = "addbtn-container" style="display: flex">
                     <div class = "addbtn">
-                        <a href="addproduct">Thêm sản phẩm</a>
+                        <a href="add_category">Thêm Loại Rượu</a>
                     </div>
                 </div>
                 <div class="table-container">
@@ -124,28 +125,22 @@
                     <table >
                         <thead>
                         <th>ID</th>
-                        <th style="width: 30%">Tên rượu</th>
                         <th>Loại rượu</th>
-                        <th>Ảnh</th>
                         <th>Sửa</th>
                         <th>Xóa</th>
                         </thead>
-                        <tbody >
+                        <tbody>
                             <%
-                                    List<Product> products = (ArrayList<Product>) request.getAttribute("products");
+                                    List<Category> categories  = (ArrayList<Category>) request.getAttribute("categories");
                                     Integer numberOfPage = (Integer)request.getAttribute("numberofpage");
                                     Integer currentpage = (Integer)request.getAttribute("page");
-                                    for(Product prd: products){
+                                    for(Category category: categories){
                             %>
                             <tr>
-                                <td><%=prd.getId()%></td>
-                                <td><%=prd.getName()%></td>
-                                <td ><%=prd.getCategory().getName()%></td>
-                                <td >
-                                    <img class ="thumbnail" src="./assets/admin/images/thumbnail/<%=prd.getThumbnail()%>">
-                                </td>
-                                <td ><a class ="ti-settings"  href="updateproduct?id=<%=prd.getId()%>&page=<%=currentpage%>">Update</a></td>
-                                <td><a class = "ti-trash" href="deleteproduct?id=<%=prd.getId()%>&page=<%=currentpage%>">Delete</a></td>
+                                <td><%=category.getId()%></td>
+                                <td><%=category.getName()%></td>
+                                <td ><a class ="ti-settings"  href="update_category?id=<%=category.getId()%>&page=<%=currentpage%>">Update</a></td>
+                                <td><a class = "ti-trash" href="delete_category?id=<%=category.getId()%>&page=<%=currentpage%>">Delete</a></td>
                             </tr>
                             <%
                         }
@@ -159,14 +154,14 @@
                          for(int i = 1; i <= numberOfPage; i++){
                             if(i != currentpage){
                         %>
-                        <a class="page-box" href="products?page=<%=i%>">
+                        <a class="page-box" href="categories?page=<%=i%>">
                             <%=i%>
                         </a>
                         <%
                             }
                             else{
                         %>
-                        <a class="currentpage" href="products?page=<%=i%> ">
+                        <a class="currentpage" href="categories?page=<%=i%> ">
                             <%=i%>
                         </a>
                         <%

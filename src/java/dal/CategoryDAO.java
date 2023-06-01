@@ -66,4 +66,35 @@ public class CategoryDAO extends ConnectDB{
             Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    public void deleteById(int id){
+        try {
+            ProductDAO productDAO = new ProductDAO();
+            productDAO.deleteByCatID(id);
+            productDAO.close();
+            String query = "delete from categories where id = " + id + ";";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+    }
+    
+    public void update(Integer id, String name) throws SQLException{
+        String query = "update categories set name = N'" + name + "' where id = " + id + ";"; 
+        PreparedStatement prepare = connection.prepareStatement(query);
+        prepare.execute();
+    }
+    
+    public void add(String name){
+        try {
+            String query = "insert into categories values ( N'" + name +"');";
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            preparedStatement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

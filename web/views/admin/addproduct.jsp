@@ -5,12 +5,6 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%-- 
-    Document   : updateproduct
-    Created on : Mar 28, 2023, 8:16:50 PM
-    Author     : chaum
---%>
-
 <%@page import="java.util.*,java.util.List,java.util.ArrayList,model.Category,model.Product" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -45,7 +39,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="categories">
                                 <div class="menu qlloairuou">
                                     <i class="ti-stats-up"></i>
                                     <p>Quản Lí Loại Rượu</p>
@@ -54,7 +48,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="products">
                                 <div class="menu qlwine">
                                     <i class="ti-clipboard"></i>
                                     <p>Quản Lí Rượu</p>
@@ -99,19 +93,7 @@
                     <i class="ti-menu"></i>
                 </div>
                 <div class="nav">
-                    <div class="navbar">
-                        <ul>
-                            <li>
-                                <a href="#"><i class="ti-search"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="ti-bell"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="ti-email"></i></a>
-                            </li>
-                        </ul>
-                    </div>
+                    
                     <div class="user">
                         <img src="./assets/img/avt1.jpg" alt="">
                         <p>Nguyễn Văn A</p>
@@ -128,7 +110,7 @@
                         <i class="ti-home"> Trang Chủ</i>
                         <i class="ti-angle-right"></i>
                         <a href="products"> Quản Lí Rượu <i class="ti-angle-right"></i></a>
-                        <a href="#"> Sửa </a>
+                        <a href="#"> Thêm Mới </a>
                     </div>
                 </div>
                 <%
@@ -138,35 +120,35 @@
 
                 <div class="content">
                     <form action ="addproduct" method="post">
-                        <div class = "form_row">
-                            <div class = "form_label">Tên rượu</div>
-                            <input id ="name" class = "form_input" type="text"  name ="name" >
+                        <div class = "form-row">
+                            <div class = "form-label">Tên rượu</div>
+                            <input id ="name" class = "form-input" type="text"  name ="name" >
                             <small></small>
                         </div>
-                        <div class = "form_row">
-                            <label class = "form_label">Ảnh</label>
+                        <div class = "form-row">
+                            <label class = "form-label">Ảnh</label>
                             <input accept="image/*" type="file" id="thumbnail" onchange="preview()"  name ="thumbnail"/>
                             <img id="frame" src="./assets/admin/images/thumbnail/" width="150px" height="150px" value = "" />
                             <small></small>
                         </div>
-                        <div class = "form_row">
-                            <div class = "form_label">Mô tả</div>
-                            <input  id = "description" class = "form_input" type="textarea"  name = "description">
+                        <div class = "form-row">
+                            <div class = "form-label">Mô tả</div>
+                            <input  id = "description" class = "form-input" type="textarea"  name = "description">
                             <small></small>
                         </div>
-                            <div class = "form_row">
-                            <div class = "form_label">Hãng</div>
-                            <input  id = "branch" class = "form_input" type="textarea" name = "branch">
+                            <div class = "form-row">
+                            <div class = "form-label">Hãng</div>
+                            <input  id = "branch" class = "form-input" type="textarea" name = "branch">
                             <small></small>
                         </div>
-                        <div class = "form_row"> 
-                            <label class = "form_label">Quy cách</label>
-                            <input id ="unit" class = "form_input" type="text" name = "unit">
+                        <div class = "form-row"> 
+                            <label class = "form-label">Quy cách</label>
+                            <input id ="unit" class = "form-input" type="text" name = "unit">
                             <small></small>
                         </div>
-                        <div class = "form_row">
-                            <label class = "form_label">Loại rượu</label>
-                            <select id ="category_id" class = "form_input" name = "category_id">
+                        <div class = "form-row">
+                            <label class = "form-label">Loại rượu</label>
+                            <select id ="category_id" class = "form-input" name = "category_id">
                                 <%
                                     for(Category category: categories){
                                 %>
@@ -193,33 +175,33 @@
                                 %>
                             </select>
                         </div>
-                        <div class = "form_row">
-                            <label class = "form_label">Dung tích</label>
-                            <input id ="capacity" class = "form_input" type="number"  name ="capacity" >
+                        <div class = "form-row">
+                            <label class = "form-label">Dung tích</label>
+                            <input id ="capacity" class = "form-input" type="number"  name ="capacity" >
                             <small></small>
                         </div>
-                        <div class = "form_row">
-                            <label class = "form_label">Nồng độ cồn</label>
-                            <input id ="alcohol" class = "form_input" type="number"  name = "alcohol">
+                        <div class = "form-row">
+                            <label class = "form-label">Nồng độ cồn</label>
+                            <input id ="alcohol" class = "form-input" type="number"  name = "alcohol">
                             <small></small>
                         </div>
-                        <div class = "form_row">
-                            <label class = "form_label">Số lượng</label>
-                            <input id ="quantity" class = "form_input" type="number"  name = "quantity">
+                        <div class = "form-row">
+                            <label class = "form-label">Số lượng</label>
+                            <input id ="quantity" class = "form-input" type="number"  name = "quantity">
                             <small></small>
                         </div>
-                        <div class = "form_row">
-                            <label class = "form_label">Giá</label>
-                            <input id ="price" class = "form_input" type="number"  name = "price">
+                        <div class = "form-row">
+                            <label class = "form-label">Giá</label>
+                            <input id ="price" class = "form-input" type="number"  name = "price">
                             <small></small>
                         </div>
-                        <div class = "form_row">
-                            <label class = "form_label">Giá khuyến mãi</label>
-                            <input id ="price_sale" class = "form_input" type="number"  name = "price_sale"> 
+                        <div class = "form-row">
+                            <label class = "form-label">Giá khuyến mãi</label>
+                            <input id ="price_sale" class = "form-input" type="number"  name = "price_sale"> 
                             <small></small>
                         </div>
 
-                        <div class = "form_row">
+                        <div class = "form-row">
                             <button id = "btnsave">Save</button>
                         </div>
                     </form>

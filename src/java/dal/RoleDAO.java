@@ -7,6 +7,8 @@ package dal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import model.Role;
 
 /**
@@ -33,6 +35,24 @@ public class RoleDAO extends ConnectDB{
             System.out.println(e);
         }
         return role;
+    }
+    
+    //lay tat ca role
+    public List<Role> getAllRoles() {
+        List<Role> listRole = new ArrayList<>();
+        String sql = "select * from roles";
+        try {
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet rs = statement.executeQuery();
+            while(rs.next()){
+                Role role = new Role();
+                role.setId(rs.getInt("id"));
+                role.setName(rs.getString("name"));
+                listRole.add(role);
+            }
+        } catch (SQLException e) {
+        }
+        return listRole;
     }
     
 }

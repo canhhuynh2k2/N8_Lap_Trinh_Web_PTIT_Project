@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <filter>
+        <filter-name>AdminAccessFilter</filter-name>
+        <filter-class>filter.AdminAccessFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>SignInFilter</filter-name>
+        <filter-class>filter.SignInFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>SignInFilter</filter-name>
+        <url-pattern>/addproduct</url-pattern>
+        <url-pattern>/deleteproduct</url-pattern>
+        <url-pattern>/delete_user</url-pattern>
+        <url-pattern>/list_user</url-pattern>
+        <url-pattern>/products</url-pattern>
+        <url-pattern>/updateproduct</url-pattern>
+        <url-pattern>/update_user</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminAccessFilter</filter-name>
+        <url-pattern>/list_user</url-pattern>
+        <url-pattern>/delete_user</url-pattern>
+    </filter-mapping>
     <servlet>
         <servlet-name>UserSignUp</servlet-name>
         <servlet-class>controller.user.UserSignUp</servlet-class>
@@ -31,6 +54,26 @@
     <servlet>
         <servlet-name>UserSignOut</servlet-name>
         <servlet-class>controller.user.UserSignOut</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminSignIn</servlet-name>
+        <servlet-class>controller.admin.AdminSignIn</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminSignOut</servlet-name>
+        <servlet-class>controller.admin.AdminSignOut</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminListUser</servlet-name>
+        <servlet-class>controller.admin.AdminListUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminUpdateUser</servlet-name>
+        <servlet-class>controller.admin.AdminUpdateUser</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminDeleteUser</servlet-name>
+        <servlet-class>controller.admin.AdminDeleteUser</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>UserSignUp</servlet-name>
@@ -64,9 +107,33 @@
         <servlet-name>UserSignOut</servlet-name>
         <url-pattern>/user_sign_out</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminSignOut</servlet-name>
+        <url-pattern>/admin_sign_out</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminSignIn</servlet-name>
+        <url-pattern>/admin_sign_in</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminListUser</servlet-name>
+        <url-pattern>/list_user</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminUpdateUser</servlet-name>
+        <url-pattern>/update_user</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminDeleteUser</servlet-name>
+        <url-pattern>/delete_user</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/views/user/error_404.jsp</location>
+    </error-page>
 </web-app>

@@ -5,64 +5,67 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel = "stylesheet" href = "assets/user/sign_in/login.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Đăng Nhập</title>
+  <link rel="stylesheet" href="assets/user/sign_in/styles.css">
 </head>
+
 <body>
-    <div class="container">
-        <form action="user_sign_in" method  = "POST" class = "login-form" id = "login-form">
-            <h3 class = "heading">Đăng nhập</h3>
-            <p class = "heading">Chào mừng bạn quay trở lại cửa hàng của chúng tôi!</p>
-            <div class="spacer"></div>
-            
-            <div class="form-group">
-                <label for="email" class = "form-label">Email đăng nhập</label> <br/>
-                <input type="text" id="email" name = "email" placeholder="VD: huynh@domain.com">
-                <span class = "form-message"></span>
-            </div>
-            <div class="form-group">
-                <label for="password" class = "form-label">Mật khẩu</label> <br/>
-                <input type="password" id="password" name = "password" placeholder="Nhập mật khẩu">
-                <span class = "form-message"></span>
-            </div>
-            <a href = "#" id = "password-forgot"><i class = "password-forgot">Quên mật khẩu?</i></a>
-            <a href = "user_sign_up" id = "register-account"><i class = "register-account">Bạn chưa có tài khoản?</i></a>
-            <button class="login-btn">Đăng nhập</button>
-        </form>
+  <div class="back-to-home">
+    <a href="user_home">Trang Chủ</a>
+  </div>
+  <div class="inner-wrap">
+    <div class="header">
+      <h1>Đăng Nhập</h1>
     </div>
-<script src="assets/user/sign_in/validator.js"></script>
+    <form action="user_sign_in" method="post" id="form" class="form">
+      <div class="form-group">
+        <input type="text" placeholder="Email" id="email" name="email">
+        <span class="success-icon">
+          <i class="fa-solid fa-check"></i>
+        </span>
+        <span class="error-icon">
+          <i class="fa-solid fa-xmark"></i>
+        </span>
+        <small id="wrong-user">Error</small>
+      </div>
+      <div class="form-group">
+        <input type="password" placeholder="Mật khẩu mới" id="password" name="password">
+        <span class="success-icon">
+          <i class="fa-solid fa-check"></i>
+        </span>
+        <span class="error-icon">
+          <i class="fa-solid fa-xmark"></i>
+        </span>
+        <small>Error</small>
+      </div>
+      <div class="btn">
+        <button type="submit">Đăng Nhập</button>
+      </div>
+    </form>
+    <div class="sign-up">
+      <a href="user_sign_up">Chưa Có Tài Khoản</a>
+    </div>
+  </div>
 
-<script>
-    Validator({
-        form : "#login-form", 
-        formGroupSelector: '.form-group',
-        errorSelector: ".form-message",
-        rules: [
-            Validator.isRequired('#email', "Vui lòng nhập email"),
-            Validator.isEmail('#email'),
-            Validator.minLength('#password', 6),
-        ],
-    });
-</script>
-
-<script type="text/javascript">
+  <script src="assets/user/sign_in/main.js"></script>
+  <script type="text/javascript">
     var wrongUser = "${requestScope.wrongUser}";
-    var error = "${requestScope.error}";
     if (wrongUser !== "") {
-        alert(wrongUser);
-    } else if (error !== "") {
-        alert(error);
+      errorMessage = document.getElementById("wrong-user");
+      errorMessage.innerText = wrongUser;
+      errorMessage.classList.add("visible");
+      email.focus();
     }
-</script>
-
+  </script>
 </body>
+
 </html>

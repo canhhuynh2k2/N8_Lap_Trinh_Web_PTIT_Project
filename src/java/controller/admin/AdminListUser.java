@@ -2,24 +2,23 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.user;
+package controller.admin;
 
 import dal.UserDAO;
-import extension.Encrypt;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import java.util.List;
 import model.User;
 
 /**
  *
  * @author Bach
  */
-public class UserSignUp extends HttpServlet {
+public class AdminListUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +37,10 @@ public class UserSignUp extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UserSignUp</title>");
+            out.println("<title>Servlet AdminListUser</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UserSignUp at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AdminListUser at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +58,26 @@ public class UserSignUp extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("views/user/sign_up.jsp").forward(request, response);
+        String pageStr = request.getParameter("page");
+        int page;
+        if (pageStr != null) {
+            try {
+                page = Integer.parseInt(pageStr);
+            } catch (NumberFormatException e) {
+                page = 1;
+            }
+        } else {
+            page = 1;
+        }
+        List<User> listUserRaw = new UserDAO().getAllUsers();
+        int itemsPerPage = 10;
+        int totalPages = (int) Math.ceil(listUserRaw.size() * 1.0 / itemsPerPage);
+        int start = (page - 1) * itemsPerPage;
+        int end = Math.min(page * itemsPerPage, listUserRaw.size());
+        request.setAttribute("page", page);
+        request.setAttribute("totalPages", totalPages);
+        request.setAttribute("listUser", new UserDAO().getListUserByPage(listUserRaw, start, end));
+        request.getRequestDispatcher("views/admin/list_user.jsp").forward(request, response);
     }
 
     /**
@@ -73,29 +91,26 @@ public class UserSignUp extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String fullName = request.getParameter("full_name");
-        String phoneNumber = request.getParameter("phone_number");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String passWordEncrypt = Encrypt.toSHA1(password);
-        User userRaw = new User();
-        userRaw.setFullname(fullName);
-        userRaw.setEmail(email);
-        userRaw.setPassword(passWordEncrypt);
-        userRaw.setPhoneNumber(phoneNumber);
-        UserDAO userDB = new UserDAO();
-        if (userDB.isExisted(userRaw)) {
-            request.setAttribute("fullName", fullName);
-            request.setAttribute("phoneNumber", phoneNumber);
-            request.setAttribute("isExisted", "Email Đã Tồn Tại");
-            request.getRequestDispatcher("views/user/sign_up.jsp").forward(request, response);
+        String pageStr = request.getParameter("page");
+        int page;
+        if (pageStr != null) {
+            try {
+                page = Integer.parseInt(pageStr);
+            } catch (NumberFormatException e) {
+                page = 1;
+            }
         } else {
-            userDB.addUser(userRaw);
-            User user = userDB.getUserByEmail(email);
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-            response.sendRedirect("user_home");
+            page = 1;
         }
+        List<User> listUserRaw = new UserDAO().getAllUsers();
+        int itemsPerPage = 10;
+        int totalPages = (int) Math.ceil(listUserRaw.size() * 1.0 / itemsPerPage);
+        int start = (page - 1) * itemsPerPage;
+        int end = Math.min(page * itemsPerPage, listUserRaw.size());
+        request.setAttribute("page", page);
+        request.setAttribute("totalPages", totalPages);
+        request.setAttribute("listUser", new UserDAO().getListUserByPage(listUserRaw, start, end));
+        request.getRequestDispatcher("views/admin/list_user.jsp").forward(request, response);
     }
 
     /**

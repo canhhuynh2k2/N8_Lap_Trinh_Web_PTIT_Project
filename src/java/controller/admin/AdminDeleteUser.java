@@ -3,27 +3,21 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 
-package controller.user;
+package controller.admin;
 
-import dal.CategoryDAO;
-import dal.ProductDAO;
+import dal.UserDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import model.Category;
 
 /**
  *
  * @author Bach
  */
-public class UserHome extends HttpServlet {
+public class AdminDeleteUser extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -40,10 +34,10 @@ public class UserHome extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UserHome</title>");  
+            out.println("<title>Servlet AdminDeleteUser</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UserHome at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet AdminDeleteUser at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,25 +54,21 @@ public class UserHome extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        List<Category> categories = new ArrayList<>();
-        Map<Integer, List<String>> branchesMap = new HashMap<>();
-        CategoryDAO catDB = new CategoryDAO();
-        ProductDAO productDB = new ProductDAO();
-        
-        categories = catDB.getAll();
-        for (Category category : categories) {
-            branchesMap.put(category.getId(), productDB.getBranches(category.getId()));
-            category.setProducts(productDB.getByCatId(category.getId()));
+        String userIdRaw = request.getParameter("id");
+        try {
+            int userId = Integer.parseInt(userIdRaw);
+            int result = new UserDAO().deleteUser(userId);
+            if (result == 1) {
+                request.setAttribute("success", "Thanh Cong");
+                request.getRequestDispatcher("list_user").forward(request, response);
+            } else {
+                request.setAttribute("error", "Da Xay Ra Loi");
+                request.getRequestDispatcher("list_user").forward(request, response);
+            }
+        } catch (NumberFormatException e) {
+            request.setAttribute("error", "Da Xay Ra Loi");
+            request.getRequestDispatcher("list_user").forward(request, response);
         }
-
-        productDB.close();
-        catDB.close();
-        
-        
-        
-        request.setAttribute("categories", categories);
-        request.setAttribute("branchesmap", branchesMap);
-        request.getRequestDispatcher("./views/user/home.jsp").forward(request, response);
     } 
 
     /** 

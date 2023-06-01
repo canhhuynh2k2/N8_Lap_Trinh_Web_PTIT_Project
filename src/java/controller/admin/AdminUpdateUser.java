@@ -2,24 +2,25 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package controller.user;
+package controller.admin;
 
+import dal.RoleDAO;
 import dal.UserDAO;
-import extension.Encrypt;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
+import java.util.List;
+import model.Role;
 import model.User;
 
 /**
  *
  * @author Bach
  */
-public class UserSignUp extends HttpServlet {
+public class AdminUpdateUser extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +39,10 @@ public class UserSignUp extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UserSignUp</title>");
+            out.println("<title>Servlet AdminUpdateUser</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UserSignUp at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet AdminUpdateUser at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +60,18 @@ public class UserSignUp extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("views/user/sign_up.jsp").forward(request, response);
+        String userIdRaw = request.getParameter("id");
+        try {
+            int userId = Integer.parseInt(userIdRaw);
+            User user = new UserDAO().getUserById(userId);
+            List<Role> listRole = new RoleDAO().getAllRoles();
+            request.setAttribute("listRole", listRole);
+            request.setAttribute("user", user);
+            request.getRequestDispatcher("views/admin/update_user.jsp").forward(request, response);
+        } catch (NumberFormatException e) {
+            request.setAttribute("error", "Da Xay Ra Loi");
+            request.getRequestDispatcher("list_user").forward(request, response);
+        }
     }
 
     /**
@@ -73,28 +85,24 @@ public class UserSignUp extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String fullName = request.getParameter("full_name");
-        String phoneNumber = request.getParameter("phone_number");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String passWordEncrypt = Encrypt.toSHA1(password);
-        User userRaw = new User();
-        userRaw.setFullname(fullName);
-        userRaw.setEmail(email);
-        userRaw.setPassword(passWordEncrypt);
-        userRaw.setPhoneNumber(phoneNumber);
-        UserDAO userDB = new UserDAO();
-        if (userDB.isExisted(userRaw)) {
-            request.setAttribute("fullName", fullName);
-            request.setAttribute("phoneNumber", phoneNumber);
-            request.setAttribute("isExisted", "Email Đã Tồn Tại");
-            request.getRequestDispatcher("views/user/sign_up.jsp").forward(request, response);
-        } else {
-            userDB.addUser(userRaw);
-            User user = userDB.getUserByEmail(email);
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-            response.sendRedirect("user_home");
+        String userIdRaw = request.getParameter("user_id");
+        String roleIdRaw = request.getParameter("role_id");
+        try {
+            int userId = Integer.parseInt(userIdRaw);
+            int roleId = Integer.parseInt(roleIdRaw);
+            User user = new UserDAO().getUserById(userId);
+            user.getRole().setId(roleId);
+            int result = new UserDAO().updateUser(user);
+            if (result == 1) {
+                request.setAttribute("success", "Thanh Cong");
+                request.getRequestDispatcher("list_user").forward(request, response);
+            } else {
+                request.setAttribute("error", "Da Xay Ra Loi");
+                request.getRequestDispatcher("list_user").forward(request, response);
+            }
+        } catch (NumberFormatException e) {
+            request.setAttribute("error", "Da Xay Ra Loi");
+            request.getRequestDispatcher("list_user").forward(request, response);
         }
     }
 

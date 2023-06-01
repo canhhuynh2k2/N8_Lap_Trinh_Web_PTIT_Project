@@ -114,11 +114,11 @@
                     <a href ="allproduct?catid=<%=category.getId()%>">Xem tất cả</a>  
                 </div>
                 <div class="list-products">
-            <% ArrayList<Product> products = (ArrayList<Product>) category.getProducts();
-               for(int i = 0; i < Math.min(3, products.size()); i++){
-               Product prd = products.get(i);
-                %>
-                <a href="productdetail?pid=<%=prd.getId()%>" class="product-item">
+                    <% ArrayList<Product> products = (ArrayList<Product>) category.getProducts();
+                       for(int i = 0; i < Math.min(3, products.size()); i++){
+                       Product prd = products.get(i);
+                    %>
+                    <a href="productdetail?pid=<%=prd.getId()%>" class="product-item">
                         <div class="product-img">
                             <img src="./assets/admin/images/thumbnail/<%=prd.getThumbnail()%>" alt=""/>
                         </div>
@@ -126,11 +126,11 @@
                         <p><strong>Giá gốc: </strong><del><%=prd.getPrice()%> đ</del></p>
                         <p><strong>Giá bán: </strong><%=prd.getPrice_sale()%> đ</p>
                     </a> 
-               
-                <%
-                }
-            %>
-                 </div>
+
+                    <%
+                    }
+                    %>
+                </div>
             </div>
             <%
                 }
@@ -212,6 +212,15 @@
                 <p class = "copyright-item">©Copyright Nhóm 8 LTWeb PTIT 2023</p>
             </div>
         </footer>  
-        <script src="./assets/user/js/home.js"></script>
+        <!--<script src="./assets/user/js/home.js"></script>-->
+
+        <script type="text/javascript">
+                        var accessDined = "${requestScope.accessDined}";
+                        console.log(accessDined);
+                        if (accessDined !== "") {
+                            alert(accessDined);
+                        }
+        </script>
+
     </body>
 </html>

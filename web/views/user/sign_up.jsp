@@ -5,80 +5,98 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel = "stylesheet" href = "assets/user/sign_up/register.css">
-</head>
-<body>
-    <div class="container">
-        <form action="user_sign_up" method  = "POST" class = "form disable" id = "register-form">
-            <h3 class = "heading">Đăng ký</h3>
-            <p class = "heading">Chào mừng bạn đến với cửa hàng của chúng tôi!</p>
-            <div class="spacer"></div>
-            <div class="form-group">
-                <label for="fullname" class = "form-label">Tên đầy đủ</label> <br/>
-                <input type="text" id="fullname" name = "fullname" placeholder="VD: Huỳnh Nguyễn">
-                <span class = "form-message"></span>
-            </div>
-            <div class="form-group">
-                <label for="email" class = "form-label">Email</label> <br/>
-                <input type="text" id="email" name = "email" placeholder="VD: huynh@domain.com">
-                <span class = "form-message"></span>
-            </div>
-            <div class="form-group">
-                <label for="password" class = "form-label">Mật khẩu</label> <br/>
-                <input type="password" id="password" name = "password" placeholder="Nhập mật khẩu">
-                <span class = "form-message"></span>
-            </div>
-            <div class="form-group">
-                <label for="password-confirmation" class = "form-label">Nhập lại mật khẩu</label> <br/>
-                <input type="password" id="password-confirmation" name = "password-confirmation" placeholder="Nhập lại mật khẩu">
-                <span class = "form-message"></span>
-            </div>
-            <a href="user_sign_in" class = "login-account"><i>Bạn đã có tài khoản?</i></a>
-            <button class="register-btn">Đăng ký</button>
-        </form>
 
-        
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Đăng Ký</title>
+  <link rel="stylesheet" href="assets/user/sign_up/styles.css">
+</head>
+
+<body>
+  <div class="back-to-home">
+    <a href="user_home">Trang Chủ</a>
+  </div>
+  <div class="inner-wrap">
+    <div class="header">
+      <h1>Tạo Tài Khoản Mới</h1>
     </div>
-    <script src="assets/user/sign_up/validator.js"></script>
-    <script>
-        Validator({
-            form : "#register-form", 
-            formGroupSelector: '.form-group',
-            errorSelector: ".form-message",
-            rules: [
-                Validator.isRequired('#fullname', "Vui lòng nhập tên đầy đủ của bạn"),
-                Validator.isRequired('#email', "Vui lòng nhập email"),
-                Validator.isEmail('#email'),
-                Validator.minLength('#password', 6),
-                Validator.isRequired('#password-confirmation'),
-                Validator.isConfirmed("#password-confirmation", function(){
-                    return document.querySelector('#register-form #password').value;
-                }, 'Mật khẩu nhập lại không chính xác')
-            ],
-            onSubmit: function(data){
-                //Call API
-                    console.log(data);
-                }
-        });
-    </script>
-    
-<script type="text/javascript">
+    <form action="user_sign_up" method="post" id="form" class="form">
+      <div class="form-group">
+        <input type="text" placeholder="Họ Và Tên" id="full-name" name="full_name" value="${requestScope.fullName}">
+        <span class="success-icon">
+          <i class="fa-solid fa-check"></i>
+        </span>
+        <span class="error-icon">
+          <i class="fa-solid fa-xmark"></i>
+        </span>
+        <small>Error</small>
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="Số điện thoại" id="phone-number" maxlength="11" name="phone_number"
+          value="${requestScope.phoneNumber}">
+        <span class="success-icon">
+          <i class="fa-solid fa-check"></i>
+        </span>
+        <span class="error-icon">
+          <i class="fa-solid fa-xmark"></i>
+        </span>
+        <small>Error</small>
+      </div>
+      <div class="form-group">
+        <input type="text" placeholder="Email" id="email" name="email">
+        <span class="success-icon">
+          <i class="fa-solid fa-check"></i>
+        </span>
+        <span class="error-icon">
+          <i class="fa-solid fa-xmark"></i>
+        </span>
+        <small id="email-existed">Error</small>
+      </div>
+      <div class="form-group">
+        <input type="password" placeholder="Mật khẩu mới" id="password" name="password">
+        <span class="success-icon">
+          <i class="fa-solid fa-check"></i>
+        </span>
+        <span class="error-icon">
+          <i class="fa-solid fa-xmark"></i>
+        </span>
+        <small>Error</small>
+      </div>
+      <div class="form-group">
+        <input type="password" placeholder="Nhập lại mật khẩu mới" id="confirm-password">
+        <span class="success-icon">
+          <i class="fa-solid fa-check"></i>
+        </span>
+        <span class="error-icon">
+          <i class="fa-solid fa-xmark"></i>
+        </span>
+        <small>Error</small>
+      </div>
+      <div class="btn">
+        <button type="submit">Đăng ký</button>
+      </div>
+    </form>
+    <div class="sign-in">
+      <a href="user_sign_in">Đã Có Tài Khoản</a>
+    </div>
+  </div>
+
+  <script src="assets/user/sign_up/main.js"></script>
+  <script type="text/javascript">
     var isExisted = "${requestScope.isExisted}";
-    var error = "${requestScope.error}";
     if (isExisted !== "") {
-        alert(isExisted);
-    } else if (error !== "") {
-        alert(error);
+      errorMessage = document.getElementById("email-existed");
+      errorMessage.innerText = isExisted;
+      errorMessage.classList.add("visible");
+      email.focus();
     }
-</script>
+  </script>
 </body>
+
 </html>

@@ -1,0 +1,225 @@
+/* Begin Css Chung */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* End Css Chung */
+
+body {
+  height: 100vh;
+  background: #F0F2F5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Begin Quay Ve Trang Chu */
+
+.back-to-home {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.back-to-home a {
+  display: inline-block;
+  padding: 10px;
+  background-color: #3fb877;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.back-to-home a:hover {
+  color: #212529;
+}
+
+/* End Quay Ve Trang Chu */
+
+/* Begin Header */
+
+.header {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.header h1 {
+  color: #232323;
+  padding: 0;
+  font-size: 34px;
+}
+
+@media screen and (max-width: 576px) {
+  .header h1 {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header h1 {
+    font-size: 28px;
+  }
+}
+
+/* End Header */
+
+/* Begin Form */
+
+.inner-wrap {
+  width: 60%;
+  padding: 0 30px 20px 30px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 1200px) {
+  .inner-wrap {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .inner-wrap {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .inner-wrap {
+    width: 100%;
+  }
+}
+
+.form-group {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 20px 10px 20px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  border: 3px solid #bbc0c7;
+  border-radius: 5px;
+  outline: none;
+}
+
+@media screen and (max-width: 768px) {
+  .form-group input {
+    font-size: 16px;
+  }
+}
+
+.form-group input:focus {
+  border: 3px solid #3fb877;
+}
+
+
+.btn {
+  display: flex;
+  justify-content: center;
+}
+
+.btn button {
+  width: 50%;
+  font-size: 20px;
+  background-color: #3fb877;
+  padding: 10px 20px 10px 20px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn button:hover {
+  color: #212529;
+}
+
+.sign-in {
+  align-self: flex-end;
+  margin: 30px 0 0 0;
+}
+
+.sign-in a {
+  padding: 5px 10px;
+  color: #fff;
+  background-color: #3fb877;
+  border-radius: 3px;
+  font-size: 20px;
+}
+
+.sign-in a:hover {
+  text-decoration: none;
+  color: #212529;
+}
+
+.form-group input.success {
+  border: 3px solid #3fb877;
+}
+
+.form-group input.error {
+  border: 3px solid #e74c3c;
+}
+
+span .fa-xmark {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  color: #fff;
+  font-size: 12px;
+  background-color: #e74c3c;
+  border-radius: 50%;
+}
+
+span .fa-check {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  color: #fff;
+  font-size: 12px;
+  background-color: #2ecc71;
+  border-radius: 50%;
+}
+
+span {
+  visibility: hidden;
+}
+
+span.visible {
+  visibility: visible;
+}
+
+small {
+  visibility: hidden;
+  font-size: 18px;
+  color: #e74c3c;
+}
+
+small.visible {
+  visibility: visible;
+}
+
+/* End Form */

@@ -56,7 +56,7 @@ public class UserSignOut extends HttpServlet {
     throws ServletException, IOException {
         HttpSession session = request.getSession();
         session.removeAttribute("user");
-        response.sendRedirect("user_home");
+        response.sendRedirect("user_sign_in");
     } 
 
     /** 

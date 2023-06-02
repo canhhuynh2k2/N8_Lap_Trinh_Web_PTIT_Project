@@ -1,0 +1,165 @@
+/* Begin Css Chung */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+
+.main {
+  margin-top: 162px;
+}
+
+.main-heading {
+  background-color: #2cea75;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+}
+
+.main-heading>p {
+  font-size: 36px;
+  color: red;
+  margin: 24px auto;
+  text-transform: uppercase;
+  font-weight: 550;
+}
+
+.user-info {
+  display: flex;
+  justify-content: center;
+}
+
+.form {
+  margin-top: 20px;
+  width: 50%;
+}
+
+.form-group {
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px 20px 10px 20px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  border: 3px solid #bbc0c7;
+  border-radius: 5px;
+  outline: none;
+}
+
+.form-group input:focus {
+  border: 3px solid #3fb877;
+}
+
+
+.btn {
+  display: flex;
+  justify-content: center;
+}
+
+.btn button {
+  width: 50%;
+  font-size: 20px;
+  background-color: #3fb877;
+  padding: 10px 20px 10px 20px;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn button:hover {
+  color: #212529;
+}
+
+.link {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.link a {
+  font-size: 20px;
+  background-color: #3fb877;
+  padding: 10px 20px 10px 20px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.link a:hover {
+  color: #212529;
+}
+
+.form-group input.success {
+  border: 3px solid #3fb877;
+}
+
+.form-group input.error {
+  border: 3px solid #e74c3c;
+}
+
+span .fa-xmark {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  color: #fff;
+  font-size: 12px;
+  background-color: #e74c3c;
+  border-radius: 50%;
+}
+
+span .fa-check {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  color: #fff;
+  font-size: 12px;
+  background-color: #2ecc71;
+  border-radius: 50%;
+}
+
+span {
+  visibility: hidden;
+}
+
+span.visible {
+  visibility: visible;
+}
+
+small {
+  visibility: hidden;
+  font-size: 18px;
+  color: #e74c3c;
+}
+
+small.visible {
+  visibility: visible;
+}
+
+/* End Form */

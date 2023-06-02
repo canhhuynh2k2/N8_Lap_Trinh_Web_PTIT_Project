@@ -9,14 +9,10 @@ import extension.Encrypt;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.util.List;
-import model.Cart;
-import model.Item;
 import model.User;
 
 /**
@@ -63,22 +59,6 @@ public class UserChangePassword extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //cookie
-        Cookie[] cookies = request.getCookies();
-        String cookieTxt = "";
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("cart")) {
-                    cookieTxt += cookie.getValue();
-                }
-            }
-        }
-        Cart cart = new Cart(cookieTxt);
-        List<Item> items = cart.getItems();
-
-        request.setAttribute("cart", cart);
-        request.setAttribute("items", items);
-
         request.getRequestDispatcher("views/user/change_password.jsp").forward(request, response);
     }
 

@@ -16,15 +16,13 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import model.User;
 
 /**
  *
  * @author Bach
  */
-public class SignInFilter implements Filter {
+public class PreviousPageFilter implements Filter {
 
     private static final boolean debug = true;
 
@@ -33,12 +31,12 @@ public class SignInFilter implements Filter {
     // configured. 
     private FilterConfig filterConfig = null;
 
-    public SignInFilter() {
+    public PreviousPageFilter() {
     } 
 
     private void doBeforeProcessing(ServletRequest request, ServletResponse response)
 	throws IOException, ServletException {
-	if (debug) log("SignInFilter:DoBeforeProcessing");
+	if (debug) log("PreviousPageFilter:DoBeforeProcessing");
 
 	// Write code here to process the request and/or response before
 	// the rest of the filter chain is invoked.
@@ -65,7 +63,7 @@ public class SignInFilter implements Filter {
 
     private void doAfterProcessing(ServletRequest request, ServletResponse response)
 	throws IOException, ServletException {
-	if (debug) log("SignInFilter:DoAfterProcessing");
+	if (debug) log("PreviousPageFilter:DoAfterProcessing");
 
 	// Write code here to process the request and/or response after
 	// the rest of the filter chain is invoked.
@@ -101,18 +99,15 @@ public class SignInFilter implements Filter {
                          FilterChain chain)
 	throws IOException, ServletException {
 
-	if (debug) log("SignInFilter:doFilter()");
+	if (debug) log("PreviousPageFilter:doFilter()");
 
 	doBeforeProcessing(request, response);
 	
         HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse res = (HttpServletResponse) response;
         HttpSession session = req.getSession();
-        User user = (User) session.getAttribute("user");
-        
-        if(user == null){
-            res.sendRedirect("user_sign_in");
-        }
+        String previousUri = req.getRequestURI();
+        session.removeAttribute("previousUri");
+        session.setAttribute("previousUri", previousUri);
         
 	Throwable problem = null;
 	try {
@@ -166,7 +161,7 @@ public class SignInFilter implements Filter {
 	this.filterConfig = filterConfig;
 	if (filterConfig != null) {
 	    if (debug) { 
-		log("SignInFilter:Initializing filter");
+		log("PreviousPageFilter:Initializing filter");
 	    }
 	}
     }
@@ -176,8 +171,8 @@ public class SignInFilter implements Filter {
      */
     @Override
     public String toString() {
-	if (filterConfig == null) return ("SignInFilter()");
-	StringBuffer sb = new StringBuffer("SignInFilter(");
+	if (filterConfig == null) return ("PreviousPageFilter()");
+	StringBuffer sb = new StringBuffer("PreviousPageFilter(");
 	sb.append(filterConfig);
 	sb.append(")");
 	return (sb.toString());

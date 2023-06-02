@@ -91,7 +91,7 @@
   <script type="text/javascript">
     var isExisted = "${requestScope.isExisted}";
     if (isExisted !== "") {
-      errorMessage = document.getElementById("email-existed");
+      const errorMessage = document.getElementById("email-existed");
       errorMessage.innerText = isExisted;
       errorMessage.classList.add("visible");
       email.focus();

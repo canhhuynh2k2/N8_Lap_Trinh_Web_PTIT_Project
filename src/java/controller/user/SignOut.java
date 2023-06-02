@@ -12,12 +12,13 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import model.User;
 
 /**
  *
  * @author Bach
  */
-public class UserSignOut extends HttpServlet {
+public class SignOut extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -34,10 +35,10 @@ public class UserSignOut extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet UserSignOut</title>");  
+            out.println("<title>Servlet SignOut</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet UserSignOut at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet SignOut at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -55,8 +56,18 @@ public class UserSignOut extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         HttpSession session = request.getSession();
-        session.removeAttribute("user");
-        response.sendRedirect("user_sign_in");
+        User user = (User) session.getAttribute("user");
+        if (user == null) {
+            response.sendRedirect("user_sign_in");
+        } else {
+            if (user.getRole().getId() == 1) {
+                session.removeAttribute("user");
+                response.sendRedirect("admin_sign_in");
+            } else {
+                session.removeAttribute("user");
+                response.sendRedirect("user_sign_in");
+            }
+        }
     } 
 
     /** 

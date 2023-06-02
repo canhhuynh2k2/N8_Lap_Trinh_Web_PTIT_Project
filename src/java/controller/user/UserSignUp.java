@@ -94,7 +94,12 @@ public class UserSignUp extends HttpServlet {
             User user = userDB.getUserByEmail(email);
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            response.sendRedirect("user_home");
+            String previousUri = (String) session.getAttribute("previousUri");
+            if (previousUri != null) {
+                response.sendRedirect(previousUri);
+            } else {
+                response.sendRedirect("home");
+            }
         }
     }
 

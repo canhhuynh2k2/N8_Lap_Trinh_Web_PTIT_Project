@@ -5,23 +5,57 @@
         <filter-class>filter.AdminAccessFilter</filter-class>
     </filter>
     <filter>
-        <filter-name>SignInFilter</filter-name>
-        <filter-class>filter.SignInFilter</filter-class>
+        <filter-name>AdminSignInFilter</filter-name>
+        <filter-class>filter.AdminSignInFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>UserSignInFilter</filter-name>
+        <filter-class>filter.UserSignInFilter</filter-class>
+    </filter>
+    <filter>
+        <filter-name>PreviousPageFilter</filter-name>
+        <filter-class>filter.PreviousPageFilter</filter-class>
     </filter>
     <filter-mapping>
-        <filter-name>SignInFilter</filter-name>
+        <filter-name>PreviousPageFilter</filter-name>
+        <url-pattern>/add_category</url-pattern>
         <url-pattern>/addproduct</url-pattern>
+        <url-pattern>/categories</url-pattern>
+        <url-pattern>/delete_category</url-pattern>
         <url-pattern>/deleteproduct</url-pattern>
         <url-pattern>/delete_user</url-pattern>
         <url-pattern>/list_user</url-pattern>
         <url-pattern>/products</url-pattern>
+        <url-pattern>/update_category</url-pattern>
+        <url-pattern>/updateproduct</url-pattern>
+        <url-pattern>/update_user</url-pattern>
+        <url-pattern>/user_change_password</url-pattern>
+        <url-pattern>/user_update_profile</url-pattern>
+        <url-pattern>/user_profile</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>UserSignInFilter</filter-name>
+        <url-pattern>/user_change_password</url-pattern>
+        <url-pattern>/user_update_profile</url-pattern>
+        <url-pattern>/user_profile</url-pattern>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>AdminAccessFilter</filter-name>
+        <url-pattern>/add_category</url-pattern>
+        <url-pattern>/addproduct</url-pattern>
+        <url-pattern>/categories</url-pattern>
+        <url-pattern>/delete_category</url-pattern>
+        <url-pattern>/deleteproduct</url-pattern>
+        <url-pattern>/delete_user</url-pattern>
+        <url-pattern>/list_user</url-pattern>
+        <url-pattern>/products</url-pattern>
+        <url-pattern>/update_category</url-pattern>
         <url-pattern>/updateproduct</url-pattern>
         <url-pattern>/update_user</url-pattern>
     </filter-mapping>
     <filter-mapping>
-        <filter-name>AdminAccessFilter</filter-name>
+        <filter-name>AdminSignInFilter</filter-name>
         <url-pattern>/list_user</url-pattern>
-        <url-pattern>/delete_user</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>UserSignUp</servlet-name>
@@ -30,10 +64,6 @@
     <servlet>
         <servlet-name>UserSignIn</servlet-name>
         <servlet-class>controller.user.UserSignIn</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UserHome</servlet-name>
-        <servlet-class>controller.user.UserHome</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>UserCart</servlet-name>
@@ -52,16 +82,8 @@
         <servlet-class>controller.user.UserChangePassword</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UserSignOut</servlet-name>
-        <servlet-class>controller.user.UserSignOut</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AdminSignIn</servlet-name>
         <servlet-class>controller.admin.AdminSignIn</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>AdminSignOut</servlet-name>
-        <servlet-class>controller.admin.AdminSignOut</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>AdminListUser</servlet-name>
@@ -75,6 +97,14 @@
         <servlet-name>AdminDeleteUser</servlet-name>
         <servlet-class>controller.admin.AdminDeleteUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SignOut</servlet-name>
+        <servlet-class>controller.user.SignOut</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserUpdateProfile</servlet-name>
+        <servlet-class>controller.user.UserUpdateProfile</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UserSignUp</servlet-name>
         <url-pattern>/user_sign_up</url-pattern>
@@ -82,10 +112,6 @@
     <servlet-mapping>
         <servlet-name>UserSignIn</servlet-name>
         <url-pattern>/user_sign_in</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UserHome</servlet-name>
-        <url-pattern>/user_home</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserCart</servlet-name>
@@ -104,14 +130,6 @@
         <url-pattern>/user_change_password</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>UserSignOut</servlet-name>
-        <url-pattern>/user_sign_out</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>AdminSignOut</servlet-name>
-        <url-pattern>/admin_sign_out</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AdminSignIn</servlet-name>
         <url-pattern>/admin_sign_in</url-pattern>
     </servlet-mapping>
@@ -126,6 +144,14 @@
     <servlet-mapping>
         <servlet-name>AdminDeleteUser</servlet-name>
         <url-pattern>/delete_user</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignOut</servlet-name>
+        <url-pattern>/sign_out</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserUpdateProfile</servlet-name>
+        <url-pattern>/user_update_profile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

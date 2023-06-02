@@ -19,14 +19,11 @@
 </head>
 
 <body>
-  <div class="back-to-home">
-    <a href="user_home">Trang Chủ</a>
-  </div>
   <div class="inner-wrap">
     <div class="header">
-      <h1>Đăng Nhập</h1>
+      <h1>Admin</h1>
     </div>
-    <form action="user_sign_in" method="post" id="form" class="form">
+    <form action="admin_sign_in" method="post" id="form" class="form">
       <div class="form-group">
         <input type="text" placeholder="Email" id="email" name="email">
         <span class="success-icon">
@@ -51,25 +48,17 @@
         <button type="submit">Đăng Nhập</button>
       </div>
     </form>
-    <div class="sign-up">
-      <a href="user_sign_up">Chưa Có Tài Khoản</a>
-    </div>
   </div>
 
   <script src="assets/user/sign_in/main.js"></script>
   <script type="text/javascript">
-    var wrongUser = "${requestScope.wrongUser}";
-    if (wrongUser !== "") {
-      const errorMessage = document.getElementById("wrong-user");
-      errorMessage.innerText = wrongUser;
-      errorMessage.classList.add("visible");
-      email.focus();
-    }
-    
-    var servletPath = "${sessionScope.servletPath}";
-    if (servletPath !== "") {
-        alert(servletPath);
-    }
+        var wrongUser = "${requestScope.wrongUser}";
+        if (wrongUser !== "") {
+          const errorMessage = document.getElementById("wrong-user");
+          errorMessage.innerText = wrongUser;
+          errorMessage.classList.add("visible");
+          email.focus();
+        }
   </script>
 </body>
 

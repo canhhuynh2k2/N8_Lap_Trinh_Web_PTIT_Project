@@ -80,11 +80,17 @@ public class UserSignIn extends HttpServlet {
         user.setEmail(email);
         user.setPassword(passwordEncrypt);
         UserDAO userDB = new UserDAO();
-        if(userDB.isValid(user)){
+        if (userDB.isValid(user)) {
             user = userDB.getUserByEmail(email);
             HttpSession session = request.getSession();
+            session.removeAttribute("user");
             session.setAttribute("user", user);
-            response.sendRedirect("user_home");
+            String previousUri = (String) session.getAttribute("previousUri");
+            if (previousUri != null) {
+                response.sendRedirect(previousUri);
+            } else {
+                response.sendRedirect("home");
+            }
         } else {
             request.setAttribute("wrongUser", "Email Hoặc Mật Khẩu Không Đúng!");
             request.getRequestDispatcher("views/user/sign_in.jsp").forward(request, response);

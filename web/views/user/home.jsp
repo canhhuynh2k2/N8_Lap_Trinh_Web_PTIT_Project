@@ -215,11 +215,14 @@
         <!--<script src="./assets/user/js/home.js"></script>-->
 
         <script type="text/javascript">
-                        var accessDined = "${requestScope.accessDined}";
-                        console.log(accessDined);
-                        if (accessDined !== "") {
-                            alert(accessDined);
-                        }
+            const message = () => {
+                var accessDined = "${requestScope.accessDined}";
+                if (accessDined !== "") {
+                    alert(accessDined);
+                }
+            }
+            
+            setTimeout(message, 800);
         </script>
 
     </body>

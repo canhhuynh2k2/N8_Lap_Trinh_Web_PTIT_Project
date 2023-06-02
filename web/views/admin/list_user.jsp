@@ -38,7 +38,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="categories">
                                 <div class="menu qlloairuou">
                                     <i class="ti-stats-up"></i>
                                     <p>Quản Lí Loại Rượu</p>
@@ -47,7 +47,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="products">
                                 <div class="menu qlwine">
                                     <i class="ti-clipboard"></i>
                                     <p>Quản Lí Rượu</p>
@@ -79,11 +79,8 @@
 
             <!--BEGIN HEADER-->
             <div class="header">
-                <div class="nav">
-                    <div class="user">
-                        <p>Nguyễn Văn A</p>
-                    </div>
-                </div>
+                <c:set value="${sessionScope.user}" var="user"/>
+                <a href="user_profile">${user.email}</a>
             </div>
             <!--END HEADER-->
 
@@ -110,7 +107,7 @@
                                 <th>Sua</th>
                             </tr>
                         </thead>
-                        <tbody class="tbDanhSachSP">
+                        <tbody>
                             <c:forEach items="${requestScope.listUser}" var="user">
                                 <tr>
                                     <td>${user.id}</td>

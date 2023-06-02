@@ -77,71 +77,27 @@ a:hover {
 .header {
   position: fixed;
   top: 0;
-  height: 64px;
   right: 0;
   left: 230px;
   background-color: rgb(255,255,255);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-}
-
-.header-menu {
-  line-height: 64px;
-  text-align: center;
-  width: 40px;
-  float: left;
-  list-style: none;
-  font-size: 20px;
-  font-weight: 400;
-}
-
-.header .nav {
-  float: right;
   display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
-.header .navbar {
-  line-height: 64px;
-  text-align: center;
-  width: 148px;
-  margin-right: 18px;
-  /* background-color: coral; */
+.header a{
+  padding: 30px;
+  font-size: 18px;
+  background-color: #68AE00;
 }
 
-.header .navbar ul{
-  display: flex;
-  list-style: none; 
+.header a:hover {
+  background-color: #6d6666;
+  color: #68AE00;
 }
 
-.header .navbar a{
-  text-decoration: none;
-  font-size: 20px;
-  font-weight: 600;
-  color: rgb(111,111,111);
-}
-
-.header .navbar li {
-  width: 33.3333%;
-}
-
-.header .user {
-  display: flex;
-  text-align: center;
-  line-height: 64px;
-  margin-right: 20px;
-}
-
-.header .user img {
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  margin-top: 12px;
-  margin-right: 6px;
-}
-
-.header .user i {
-  margin-top: 24px;
-  margin-left: 6px;
-}
+/* End HEADER */
 
 /* BEGIN INNER-BLOCK */
 
@@ -199,30 +155,10 @@ th, td {
   text-decoration: none;
 }
 
-.tbDanhSachSP a:hover {
-  color: cornflowerblue;
-}
-
 .thumbnail{
   height: 200px;
   padding: 0px 20px;
   
-}
-
-.addbtn{
-  background-color: rgb(51,122,183);
-  padding: 6px;
-  position: left;
-  border: none;
-  margin: auto;
-  
-}
-
-.addbtn a{
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
-  color: rgb(255,255,255);
 }
 
 .page_bar{

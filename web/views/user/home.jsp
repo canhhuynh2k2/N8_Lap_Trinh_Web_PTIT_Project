@@ -159,26 +159,19 @@
                 <ul class="footer-content-list">
                     <li class = "footer-content-item content__about"><h3>Giới thiệu</h3>
                         <ul>
-                            <li><a href="#">Về chúng tôi</a></li>
+                            <li><a href="home">Về chúng tôi</a></li>
                             <li><a href="#">Bài viết - Blog</a></li>
                         </ul>
                     </li>
                     <li class = "footer-content-item content__product-list"><h3>Danh mục sản phẩm</h3>
                         <ul>
-                            <li><a href="#">RƯỢU WHISKY</a></li>
-                            <li><a href = "#">RƯỢU SINGLE MALT</a></li>
-                            <li><a href="#">RƯỢU COGNAC</a></li>
-                            <li><a href="#">RƯỢU NHẬT BẢN</a></li>
-                            <li><a href="#">RƯỢU VANG</a></li>
-                        </ul>
-                    </li>
-                    <li class = "footer-content-item content__policy"><h3>Chính sách</h3>
-                        <ul>
-                            <li><a href="#">Chính sách bảo mật</a></li>
-                            <li><a href="#">Hướng dẫn mua hàng - Thanh toán</a></li>
-                            <li><a href="#">Chính sách đổi trả</a></li>
-                            <li><a href="#">Chính sách giao hàng</a></li>
-                            <li><a href="#">Câu hỏi thường gặp</a></li>
+                        <%
+                            for(int i = 0; i < Math.min(4, categories.size()); i++){
+                            %>
+                             <li><a href="allproduct?catid=<%=categories.get(i).getId()%>"><%=categories.get(i).getName()%></a></li>
+                        <%
+                            }
+                        %>
                         </ul>
                     </li>
                     <li class ="footer-content-item content_shop-system"><h3>Hệ thống cửa hàng</h3>
@@ -211,8 +204,8 @@
                 <p class = "copyright-item">Các sản phẩm rượu không dành cho người dưới 18 tuổi và phụ nữ đang mang thai.</p>
                 <p class = "copyright-item">©Copyright Nhóm 8 LTWeb PTIT 2023</p>
             </div>
-        </footer>  
-        <!--<script src="./assets/user/js/home.js"></script>-->
+        </footer>
+        <script src="./assets/user/home/home.js"></script>
 
         <script type="text/javascript">
             const message = () => {

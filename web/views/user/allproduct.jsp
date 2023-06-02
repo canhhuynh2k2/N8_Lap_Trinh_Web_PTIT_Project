@@ -46,6 +46,8 @@
             String sortOption = (String)request.getAttribute("sortoption");
             
             List<Product> products = (ArrayList<Product>) request.getAttribute("products");
+            Integer numberOfPage = (Integer)request.getAttribute("numberofpage");
+            Integer currentpage = (Integer)request.getAttribute("page");
         %>
         <div class="container">
             <div class = "header" >
@@ -108,7 +110,7 @@
                 else{
                 %><%=currentCategory.getName()%><%
                     if(!branchOption.equals("0")){
-                    %>
+                %>
                 <%=" > " +branchOption %>
                 <%
                     }
@@ -284,7 +286,9 @@
                         %>
                         <li class="product-item">
                             <a href="productdetail?pid=<%=product.getId()%>">
-                                <img src="./assets/admin/images/thumbnail/<%=product.getThumbnail()%>" alt="" class="img-product">
+                                <div class = "img-container">
+                                    <img src="./assets/admin/images/thumbnail/<%=product.getThumbnail()%>" alt="" class="img-product">
+                                </div>
                                 <h3 class = "product-name"><%=product.getName()%></h3>
                                 <p class="initial-price">Giá gốc: <del><%=product.getPrice()%></del></p>
                                 <p class="sale-price">Giá bán: <%=product.getPrice_sale()%></p>
@@ -295,12 +299,111 @@
                         %>
 
                     </ul>
+                    <div class ="page-bar">
+
+                        <% 
+                         for(int i = 1; i <= numberOfPage; i++){
+                            if(i != currentpage){
+                        %>
+                        <form  action="allproduct">
+                            <input type="hidden" value="<%=catId%>" name="catid">
+                            <input type="hidden" value="<%=branchOption%>" name="branchoption">
+                            <input type="hidden" value="<%=priceOption%>" name="priceoption">
+                            <input type="hidden" value="<%=alcoholOption%>" name="alcoholoption">
+                            <input type="hidden" value="<%=capacityOption%>" name="capacityoption">
+                            <input type="hidden" value="<%=i%>" name ="page">
+                            <button class="page-box" onclick="form.submit()"><%=i%></button>
+                        </form>
+                        <%
+                            }
+                            else{
+                        %>
+                        <form  action="allproduct">
+                            <input type="hidden" value="<%=catId%>" name="catid">
+                            <input type="hidden" value="<%=branchOption%>" name="branchoption">
+                            <input type="hidden" value="<%=priceOption%>" name="priceoption">
+                            <input type="hidden" value="<%=alcoholOption%>" name="alcoholoption">
+                            <input type="hidden" value="<%=capacityOption%>" name="capacityoption">
+                            <input type="hidden" value="<%=i%>" name ="page">
+                            <button class="currentpage" onclick="form.submit()"><%=i%></button>
+                        </form>
+                        <%
+                            }
+                         }
+                        %>
+                    </div>
                 </div>
             </div>
-            <div class = "footer" >
-                <%@include file="footer.jsp" %>
-            </div>
+
         </div>
-        <script src="./assets/user/js/general.js"></script>
+        <footer>
+            <div class="footer__advantage">
+                <div class="advantage-item advantage__genuine">
+                    <i class="fa-solid fa-shield-halved advantage-icon"></i>
+                    <h3>Cửa hàng rượu chính hãng</h3>
+                    <i>Phân phối và bán lẻ rượu chính hãng</i>
+                </div>
+                <div class="advantage-item advantage__freeship">
+                    <i class="fa-solid fa-truck advantage-icon"></i>
+                    <h3>Giao hàng toàn quốc</h3>
+                    <i>Freeship với hóa đơn từ 5 triệu</i>
+                </div>
+                <div class="advantage-item advantage__quality">
+                    <i class="fa-solid fa-thumbs-up advantage-icon"></i>
+                    <h3>Cam kết chất lượng</h3>
+                    <i>Cửa hàng uy tín trên 1 năm</i>
+                </div>
+            </div>
+            <div class="footer__content">
+                <ul class="footer-content-list">
+                    <li class = "footer-content-item content__about"><h3>Giới thiệu</h3>
+                        <ul>
+                            <li><a href="home">Về chúng tôi</a></li>
+                            <li><a href="#">Bài viết - Blog</a></li>
+                        </ul>
+                    </li>
+                    <li class = "footer-content-item content__product-list"><h3>Danh mục sản phẩm</h3>
+                        <ul>
+                            <%
+                                for(int i = 0; i < Math.min(4, categories.size()); i++){
+                            %>
+                            <li><a href="allproduct?catid=<%=categories.get(i).getId()%>"><%=categories.get(i).getName()%></a></li>
+                                <%
+                                    }
+                                %>
+                        </ul>
+                    </li>
+                    <li class ="footer-content-item content_shop-system"><h3>Hệ thống cửa hàng</h3>
+                        <ul>
+                            <li>
+                                <i class="fa-solid fa-location-dot"></i>
+                                <a href = "https://goo.gl/maps/bbo9MHvQguqnbwnMA">Km10 - Nguyễn Trãi - Hà Đông - HN</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-location-dot"></i>
+                                <a href = "https://goo.gl/maps/ZewHMCuUf2GR7r8u7">122 Hoàng Quốc Việt - Cầu Giấy - HN</a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-phone"></i>
+                                <a href = "">19001018</a>
+                            </li>
+                            <li>
+                                <h3>LIÊN HỆ VỚI CHÚNG TÔI</h3>
+                                <a><i class="fa-brands fa-facebook icon-contact"></i></a>
+                                <a><i class="fa-brands fa-facebook-messenger icon-contact"></i></a>
+                                <a><i class="fa-brands fa-instagram icon-contact"></i></a>
+
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="copyright">
+                <h3 class = "copyright-item">UỐNG RƯỢU CÓ TRÁCH NHIỆM</h3>
+                <p class = "copyright-item">Các sản phẩm rượu không dành cho người dưới 18 tuổi và phụ nữ đang mang thai.</p>
+                <p class = "copyright-item">©Copyright Nhóm 8 LTWeb PTIT 2023</p>
+            </div>
+        </footer>
+        <script src="./assets/user/home/js/general.js"></script>
     </body>
 </html>

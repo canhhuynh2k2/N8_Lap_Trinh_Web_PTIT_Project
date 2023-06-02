@@ -185,7 +185,25 @@ public class AllProductServlet extends HttpServlet {
         List<Product> products = productDB.search(catId, Integer.parseInt(priceOption), branchOption, Integer.parseInt(alcoholOption), Integer.parseInt(capacityOption), Integer.parseInt(sortOption), searchName.trim());
         productDB.close();
         
-        request.setAttribute("products", products);
+        Integer currentpage,nummberperpage = 6;
+        String page_raw = (String)request.getParameter("page");
+        if(page_raw == null){
+            currentpage = 1;
+        }
+        else{
+            currentpage = Integer.parseInt(page_raw);
+        }
+        int start = (currentpage-1)*nummberperpage;
+        int end = Math.min((currentpage)*nummberperpage, products.size());
+        
+        int amountofproducts = products.size();
+        int numberofpage = (amountofproducts%nummberperpage==0)?(products.size()/nummberperpage):(products.size()/nummberperpage+1);
+        List<Product> productPage = new ArrayList<>();
+        for(int i = start; i < end; i++) productPage.add(products.get(i));
+
+        request.setAttribute("products", productPage);
+        request.setAttribute("page", currentpage);
+        request.setAttribute("numberofpage", numberofpage);
         
         request.setAttribute("categories", categories);
         request.setAttribute("branchesmap", branchesMap);

@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*,java.util.List,java.util.ArrayList,model.Category,model.Product,java.util.Map,jakarta.servlet.http.Cookie" %>
+<%@page import="java.util.*,java.util.List,java.util.ArrayList,model.Comment,model.User " %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -73,14 +74,14 @@
                 </ul>
                 <ul class = "header__nav-btn">
                     <li class="header__nav-item user-btn -display-inline"><i class="fa-solid fa-user"></i></li>
-                    <% Cookie[] cart = request.getCookies();
-                        int num = 0;
-                        for(Cookie cookie : cart){
-                            if(cookie.getName().equals("cart")){
-                                num = cookie.getValue().split("_").length;
+                        <% Cookie[] cart = request.getCookies();
+                            int num = 0;
+                            for(Cookie cookie : cart){
+                                if(cookie.getName().equals("cart")){
+                                    num = cookie.getValue().split("_").length;
+                                }
                             }
-                        }
-                    %>
+                        %>
                     <li class = "header__nav-item -display-inline"><a href = "http://localhost:8080/webn8/cart"><i class="fa-solid fa-cart-shopping"></i><div class="cart-count"><%= num%></div></a></li>
 
                 </ul>
@@ -92,7 +93,7 @@
         <div class = "header-nav"><%=product.getCategory().getName() + " > " + product.getBranch() + " > " + product.getName() %></div>
         <div class = "main">
             <div class = "detail">
-                
+
                 <div class = "detail-img">
                     <img id = "product-img" src="./assets/admin/images/thumbnail/<%=product.getThumbnail()%>" alt="ảnh sản phẩm">
                 </div>
@@ -136,13 +137,72 @@
                             <input class="plus" type="button" value="+">
                         </div>
                         <a href ="addtocart?id=<%=product.getId()%>&quantity=1" class = "add-to-card-btn"><button id = "add-to-cart"><strong>Thêm vào giỏ hàng</strong></button><br/></a>
-                    
+
                         <input type ="submit" id = "buy-now" value = "Mua ngay">
                     </div>
 
 
                 </div>
             </div>
+        </div>
+
+        <div class="tblComment">
+            <table>
+                <thead>
+                <th>STT</th>
+                <th>Tên khách hàng</th>
+                <th>Nội dung bình luận</th>
+                <th>Số sao đánh giá</th>
+                <th>Xoá comment</th>
+                </thead>
+                <tbody>
+                    <%
+                        ArrayList<Comment> listComment = (ArrayList<Comment>) request.getAttribute("listcomments");
+                        User user = (User) request.getAttribute("user");
+                        for(int i = 0; i < listComment.size(); i++) {
+                    %>
+
+                    <tr>
+                        <td><%= i + 1 %></td>
+                        <td><%= listComment.get(i).getUser().getFullname()%></td>
+                        <td><%= listComment.get(i).getContent()%></td>
+                        <td><%= listComment.get(i).getRate()%></td> 
+                        <td>    
+                            <% if (listComment.get(i).getUser().getId() == user.getId()) {
+                        
+                            %> 
+                            <a href="DeleteComments?cid=<%=listComment.get(i).getId() %>&productId=<%=product.getId() %>">Xoá Comment</a>
+
+
+                            <%
+                        }
+                            %>
+                        </td> 
+                    </tr>
+
+                    <%
+                    }                      
+                    %>
+                </tbody>
+            </table>
+            <div class="commentAndRate">
+                <form action="AddComments" method="post">
+                    <h1>Nhập và gửi comment của bạn vào ô dưới đây</h1>
+                    <input type="text" class="comment-input" placeholder="Nhập comment của bạn" name="CommentsOfCustomer">     
+                    <input type="hidden" name="productId" value = <%= product.getId()%>>     
+                    <div class="star">
+                        <h2 class="selectStar">Chọn số sao đánh giá cho sản phẩm này:          </h2>
+                        <select name="point">
+                            <option value="1">1*</option>
+                            <option value="2">2*</option>
+                            <option value="3">3*</option>
+                            <option value="4">4*</option>
+                            <option value="5">5*</option>
+                        </select>
+                    </div>
+                    <button class="addComments" onclick="form.submit()">Gửi comment</button>
+                </form>
+            </div> 
         </div>
 
         <footer>
@@ -221,6 +281,6 @@
             </div>
         </footer>  
         <script src = "./assets/user/product_detail/productdetail.js"></script>
-      
+
     </body>
 </html>

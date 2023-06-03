@@ -137,3 +137,53 @@ html{
     cursor: pointer;
 }
 
+.tblComment {
+  position: relative;
+  top: 200px;
+}
+
+.star {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.tblComment table {
+  width: 100%;
+}
+
+.tblComment th,
+.tblComment td {
+  padding: 10px;
+  border: 1px solid;
+}
+
+
+
+.commentAndRate {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: crimson;
+}
+
+.selectStar {
+  padding: 0 20px 0 0;
+}
+
+.commentAndRate h1 {
+  margin-bottom: 20px;
+}
+
+.comment-input {
+  width: 100%;
+  padding: 10px;
+}
+
+.addComments {
+  margin-left: 200px;
+  margin-top: 40px;
+  padding: 10px 20px;
+}

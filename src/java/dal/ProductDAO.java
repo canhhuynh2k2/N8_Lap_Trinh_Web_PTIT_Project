@@ -307,6 +307,22 @@ public class ProductDAO extends ConnectDB {
         } catch (SQLException ex) {
             Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
+    } 
+    
+    public void updateQuantity(int productId, int quantity) throws SQLException{
+        String query = "UPDATE products SET quantity = " + quantity + " WHERE id =" + productId + ";";
+        PreparedStatement psm = connection.prepareStatement(query);
+        psm.executeUpdate();
+    }
+    public static void main(String[] args) throws SQLException {
+        ProductDAO db = new ProductDAO();
+        
+        List<Product> products = db.search(0, 1, "0", 1, 1, 1, "ruou");
+        System.out.println(products.size());
+        for(Product product: products){
+            System.out.println(product.getName());
+        }
     }
 
+    
 }

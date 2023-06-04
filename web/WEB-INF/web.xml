@@ -82,6 +82,14 @@
         <servlet-class>controller.user.UserChangePassword</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>AddToCart</servlet-name>
+        <servlet-class>controller.user.AddToCart</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserSignOut</servlet-name>
+        <servlet-class>controller.user.UserSignOut</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>AdminSignIn</servlet-name>
         <servlet-class>controller.admin.AdminSignIn</servlet-class>
     </servlet>
@@ -115,11 +123,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserCart</servlet-name>
-        <url-pattern>/user_cart</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UserCartCheckQuantity</servlet-name>
-        <url-pattern>/user_cart_check_quantity</url-pattern>
+        <url-pattern>/cart</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UserProfile</servlet-name>
@@ -146,12 +150,8 @@
         <url-pattern>/delete_user</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SignOut</servlet-name>
-        <url-pattern>/sign_out</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UserUpdateProfile</servlet-name>
-        <url-pattern>/user_update_profile</url-pattern>
+        <servlet-name>AddToCart</servlet-name>
+        <url-pattern>/addtocart</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

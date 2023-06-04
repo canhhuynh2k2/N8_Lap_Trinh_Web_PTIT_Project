@@ -1,26 +1,25 @@
 <%-- 
-    Document   : cart
-    Created on : May 24, 2023, 9:40:04 AM
-    Author     : Huynh
+    Document   : ordersuccess
+    Created on : May 29, 2023, 10:49:29 AM
+    Author     : DELL
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import = "java.util.*,model.Category,model.Product,java.util.Map,jakarta.servlet.http.Cookie,javafx.util.Pair" %>
-
+<%@ page import = "java.util.*,model.Category,model.Product,model.Order,java.util.Map,jakarta.servlet.http.Cookie" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi tiết giỏ hàng</title>
+    <title>Đơn hàng</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://kit.fontawesome.com/ddee20c3c8.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel = "stylesheet" href = "${pageContext.request.contextPath}/assets/user/common/header.css">
     <link rel = "stylesheet" href = "${pageContext.request.contextPath}/assets/user/common/footer.css">
-    <link rel = "stylesheet" href = "${pageContext.request.contextPath}/assets/user/cart/css/cart.css">
+    <link rel = "stylesheet" href = "${pageContext.request.contextPath}/assets/user/ordersuccess/css/ordersuccess.css">
 </head>
 <body>
     <%
@@ -91,85 +90,32 @@
 
         </header>
     <div class="main">
-        <% ArrayList<Pair<Product, Integer> > cartItems = (ArrayList<Pair<Product, Integer> >)request.getAttribute("cart"); %>
-        
-        <table class="product-list-cart">
-            <tr class="product-list-subject">
-                <th class="title-subject product-subject">Sản phẩm</th>
-                <th class="price-subject product-subject">Giá</th>
-                <th class="quantity-subject product-subject">Số lượng</th>
-                <th class="temporary-price-subject product-subject">Tạm tính</th>
-            </tr>
-            <% 
-            int tong = 0;
-            for(Pair<Product, Integer> item : cartItems){
-             %>
-            <tr class = "product-item">
-                <td class = "product-title">
-                    <a href = "updatecart?delete=<%= item.getKey().getId() %>" id = "delete-btn"><i class="fa-sharp fa-solid fa-trash delete-btn"></i></a>
-                    <a class = "product-link" href="productdetail?pid=<%= item.getKey().getId() %>">
-                        <img class = "product-image" src="./assets/admin/images/thumbnail/<%= item.getKey().getThumbnail() %>" alt="">
-                        <p class = "product-name"><%= item.getKey().getName() %></p>
-                    </a>
-                    <p hidden class = "max-quantity"><%= item.getKey().getQuantity() %></p>
-                </td>
+        <% 
+            Order order = (Order)request.getAttribute("order");
+            
+        %>
+        <div class="order-notice-success">
+            <i class="success-icon fa-regular fa-circle-check"></i>
+            <strong class="notice-heading">Chúc mừng bạn đã đặt hàng thành công!</strong>
+            <ul class="order-info">
+                <li>Mã đơn hàng: <span><%= order.getId() %></span></li>
+                <li>Ngày: <span><%= order.getOrder_date() %></span></li>
                 <%
-                    String tmp = String.valueOf(item.getKey().getPrice());
+                    String p = String.valueOf(order.getTotal_money());
+                    String totalPrice = "";
                     int k = 0;
-                    String price = "";
-                    for(int j = tmp.length() - 1; j >= 0; j--){
-                        price = tmp.charAt(j) + price;
-                        k++;
-                        if(k == 3 && j != 0){
-                            price = "." + price;
-                            k = 0;
-                        }
-                    }
-                    
-                    String p = String.valueOf(item.getValue() * item.getKey().getPrice_sale());
-                    String totalPricePerProduct = "";
-                    k =0;
                     for(int j = p.length() - 1; j >= 0; j--){
-                        totalPricePerProduct = p.charAt(j) + totalPricePerProduct;
+                        totalPrice = p.charAt(j) + totalPrice;
                         k++;
                         if(k == 3 && j != 0){
-                            totalPricePerProduct = "." + totalPricePerProduct;
+                            totalPrice = "." + totalPrice;
                             k = 0;
                         }
                     }
                 %>
-                <td class = "price-product"><%= price %> VNĐ</td>
-                <td class = "quantity-product">
-                        <a class="minus" href = "updatecart?update=<%= item.getKey().getId() %>&quantity=<%= item.getValue() %>">-</a>
-                        <input class="input-qty" max="<%= item.getKey().getQuantity() %>" min="1" readonly name="" type="number" value="<%= item.getValue() %>" >
-                        <a class="plus" href = "updatecart?update=<%= item.getKey().getId() %>&quantity=<%= item.getValue() %>">+</a>
-                    </td>
-                <td class = "temporary-price-product"><%= totalPricePerProduct %> VNĐ</td>
-            </tr>
-            <%
-                tong += item.getValue() * item.getKey().getPrice_sale();
-            }
-
-            String p = String.valueOf(tong);
-            String totalPrice = "";
-            int k =0;
-            for(int j = p.length() - 1; j >= 0; j--){
-                totalPrice = p.charAt(j) + totalPrice;
-                k++;
-                if(k == 3 && j != 0){
-                    totalPrice = "." + totalPrice;
-                    k = 0;
-                }
-            }
-            %>
-            
-            
-            
-        </table>
-        <form action="checkout" class = "payment-form" method = "GET">
-            <strong class = "price-total">Tổng: <span><%= totalPrice %></span> VNĐ</strong>
-            <input id = "payment-btn" type="submit" value = "THANH TOÁN">
-        </form>
+                <li>Tổng cộng: <span><%= totalPrice %></span>VNĐ</li>
+            </ul>
+        </div>
     </div>
     <footer>
         <div class="footer__advantage">
@@ -234,7 +180,7 @@
                             <a><i class="fa-brands fa-facebook icon-contact"></i></a>
                             <a><i class="fa-brands fa-facebook-messenger icon-contact"></i></a>
                             <a><i class="fa-brands fa-instagram icon-contact"></i></a>
-    
+
                         </li>
                     </ul>
                 </li>
@@ -245,7 +191,6 @@
             <p class = "copyright-item">Các sản phẩm rượu không dành cho người dưới 18 tuổi và phụ nữ đang mang thai.</p>
             <p class = "copyright-item">©Copyright Nhóm 8 LTWeb PTIT 2023</p>
         </div>
-    </footer>  
-     <script src = "./assets/user/cart/js/cart.js"></script>
+    </footer> 
 </body>
 </html>

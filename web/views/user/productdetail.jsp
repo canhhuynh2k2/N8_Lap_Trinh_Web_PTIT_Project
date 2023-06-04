@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import = "java.util.*,java.util.List,java.util.ArrayList,model.Category,model.Product,java.util.Map,jakarta.servlet.http.Cookie" %>
+<%@ page import = "java.util.*,model.Category,model.Product,java.util.Map,jakarta.servlet.http.Cookie" %>
 <%@page import="java.util.*,java.util.List,java.util.ArrayList,model.Comment,model.User " %>
 <!DOCTYPE html>
 <html lang="en">
@@ -81,8 +81,8 @@
                                     num = cookie.getValue().split("_").length;
                                 }
                             }
-                        %>
-                    <li class = "header__nav-item -display-inline"><a href = "http://localhost:8080/webn8/cart"><i class="fa-solid fa-cart-shopping"></i><div class="cart-count"><%= num%></div></a></li>
+                    %>
+                    <li class = "header__nav-item -display-inline"><a href = "cart"><i class="fa-solid fa-cart-shopping"></i><div class="cart-count"><%= num%></div></a></li>
 
                 </ul>
 
@@ -137,8 +137,9 @@
                             <input class="plus" type="button" value="+">
                         </div>
                         <a href ="addtocart?id=<%=product.getId()%>&quantity=1" class = "add-to-card-btn"><button id = "add-to-cart"><strong>Thêm vào giỏ hàng</strong></button><br/></a>
-
-                        <input type ="submit" id = "buy-now" value = "Mua ngay">
+                        
+                        <a href ="checkout?id=<%=product.getId()%>&quantity=1" class = "buy-now-btn"><input type ="submit" id = "buy-now" value = "Mua ngay"></a>
+                
                     </div>
 
 

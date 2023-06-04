@@ -18,7 +18,7 @@ html{
     margin: 12px auto;
     color:#8c2a2a;
 }
-#list-orders{
+#list-orderdetail{
     margin: 16px auto;
     border-collapse: collapse;
     margin-bottom: 150px;
@@ -26,51 +26,65 @@ html{
 .theader{
     border-bottom: 3px solid #beb6b6;
 }
-.order-id, .tbody__order-id{
+.orderdetail-id, .tbody__orderdetail-id{
     padding: 12px 10px;
     word-wrap: break-word;
     max-width: 130px;
+    text-align: center;
 }
 
-.customer-name, .tbody__customer-name{
+.product-name, .tbody__product-name{
     padding: 12px 15px;
     word-wrap: break-word;
-    max-width: 280px;
+    max-width: 600px;
 }
 
-.phonenumber, .tbody__phonenumber{
+.quantity, .tbody__quantity{
     padding: 12px 15px;
     word-wrap: break-word;
     max-width: 150px;
+    text-align: center;
 }
-
-.address, .tbody__address{
+.product-unit, .tbody__product-unit{
     padding: 12px 15px;
+    word-wrap: break-word;
+    max-width: 150px;
+    text-align: center;
+}
+.price, .tbody__price{
+    padding: 12px 20px;
     word-wrap: break-word;
     max-width: 450px;
+    text-align: center;
 }
-
-.order-date, .tbody__order-date{
-    padding: 12px 15px;
+.tbody__total-price, .total-price{
+    padding: 12px 20px;
     word-wrap: break-word;
-    max-width: 250px;
+    max-width: 450px;
+    text-align: center;
+}
+.product-link{
+    display: flex;
+    text-align: center;
+    text-decoration: none;
+    margin: auto 12px;
 }
 
-.status, .tbody__status{
-    padding: 12px 15px;
-    word-wrap: break-word;
-    max-width: 200px;
+.product-link:hover{
+    color: #6e814e;
 }
-
-.total-money, .tbody__total-money{
-    padding: 12px 15px;
-    word-wrap: break-word;
-    max-width: 200px;
+.product-image{
+    max-width: 150px;
+    max-height: 200px;
+    margin: auto 0;
+    padding: 8px 8px;
 }
-
+.tbody__product-name{
+    line-height: 200px;
+}
 tr > td{
     padding: 12px 8px;
-    text-align: center;
+    
 }
 
 td{
@@ -79,9 +93,6 @@ td{
 th{
     font-size: 20px;
     background-color: antiquewhite;
-}
-tr{
-    border-bottom: 2px solix #e51b1b;
 }
 
 .tbody__order-id > a{
@@ -96,7 +107,7 @@ tr.tbody:nth-of-type(odd) td{
 }
         
 tr.tbody:nth-of-type(even) td{
-    background-color:#fff;
+    background-color:#e3f2eb;
 }
 tr.tbody:hover td{
     cursor: pointer;

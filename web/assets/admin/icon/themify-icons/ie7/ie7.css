@@ -1,4 +1,4 @@
-.ti-wand {
+/*.ti-wand {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe600;');
 }
 .ti-volume {
@@ -1053,4 +1053,4 @@
 }
 .ti-rss-alt {
 	*zoom: expression(this.runtimeStyle['zoom'] = '1', this.innerHTML = '&#xe75f;');
-}
+}*/

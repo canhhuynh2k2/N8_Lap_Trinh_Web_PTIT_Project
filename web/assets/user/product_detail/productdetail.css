@@ -131,6 +131,7 @@ html{
     text-transform: uppercase;
     width: 330px;
     margin: 24px 80px;
+	font-weight: 550;
 }
 
 #buy-now:hover{

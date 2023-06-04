@@ -1,0 +1,164 @@
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/css/manageorder.css">
+        <link rel="stylesheet" href="./assets/admin/icon/themify-icons/themify-icons.css">
+        <script src = "./assets/admin/js/updateproduct.js"></script>
+        <title>Ruoungoai</title>
+    </head>
+
+    <body>
+        <!-- <div id="main"> -->
+            <!--BEGIN SIDEBAR-->
+            <div class="sidebar">
+                <div class="logo">
+                    <i class="ti-crown"></i>
+                    <p>Ruoungoai</p>
+                </div>
+                <div class="sidebar-menu">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <div class="menu taikhoan">
+                                    <i class="ti-user"></i>
+                                    <p>Tài Khoản</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="menu qlloairuou">
+                                    <i class="ti-stats-up"></i>
+                                    <p>Quản Lí Loại Rượu</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="menu qlwine">
+                                    <i class="ti-clipboard"></i>
+                                    <p>Quản Lí Rượu</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="menu phanhoi">
+                                    <i class="ti-comments"></i>
+                                    <p>Phản Hồi Khách Hàng</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="menu donhang">
+                                    <i class="ti-notepad"></i>
+                                    <p>Đơn Hàng</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="menu thongke">
+                                    <i class="ti-bar-chart"></i>
+                                    <p>Thống Kê</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--END SIDEBAR-->
+
+            <!--BEGIN HEADER-->
+            <div class="header">
+                <div class="header-menu">
+                    <i class="ti-menu"></i>
+                </div>
+                <div class="nav">
+                    <div class="navbar">
+                        <ul>
+                            <li>
+                                <a href="#"><i class="ti-search"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="ti-bell"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="ti-email"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="user">
+                        <img src="./assets/img/avt1.jpg" alt="">
+                        <p>Nguyễn Văn A</p>
+                        <i class="ti-angle-down"></i>
+                    </div>
+                </div>
+            </div>
+            <!--END HEADER-->
+            <!--BEGIN INNERBLOCK-->
+            <div action = "" class="content-wrapper">
+                <form class="form-search">
+                    <input id = "search-input" type="text" name = "search-input" value = "" placeholder="Nhập số điện thoại nhận hàng">
+                    <input id = "search-btn" type="submit" value = "Tìm kiếm">
+                </form>
+                <i class = "message">Có <span>3</span> kết quả phù hợp</i>
+                <a href="" class = "view-all"><input id = "view-all-btn" type="button" value="Xem tất cả"></a>
+                <table id="list-orders">
+                    <tr class = "theader">
+                        <th class = "order-id">Mã hóa đơn</th>
+                        <th class = "customer-name">Khách hàng</th>
+                        <th class = "phonenumber">Số điện thoại</th>
+                        <th class = "address">Địa chỉ nhận hàng</th>
+                        <th class = "total-money">Tổng tiền</th>
+                        <th class ="order-date">Ngày đặt hàng</th>
+                        <th class ="note">Ghi chú</th>
+                        <th class ="status">Trạng thái</th>
+                        <th class ="option">Lựa chọn</th>
+                    </tr>
+                    <tr class = "tbody">
+                        <td class = "tbody__order-id"><a href="index.html">1</a></td>
+                        <td class = "tbody__customer-name">Nguyễn Cảnh Huỳnh</td>
+                        <td class = "tbody__phonenumber">0988092384</td>
+                        <td class = "tbody__address">Số 12 Ngách 217/9 Trần Phú, Hà Đông, Hà Nội</td>
+                        <td class = "tbody__total-money">12302943467 <span>VNĐ</span></td>
+                        <td class ="tbody__order-date">2023-03-23 14:05:12</td>
+                        <td class = "tbody__note">Giao hàng trước 17h vào thứ hoặc chủ nhật</td>
+                        <td class ="tbody__status">Đã giao</td>
+                        <td class ="tbody__option">
+                            <form action="manageorderdetail">
+                                <input type="number" hidden name = "value" value = "-1">
+                                <input type="number" hidden name = "orderid" value = "">
+                                <input type="submit" value = "Hủy" class = "cancel-btn">
+                            </form>
+                            <form action="manageorderdetail">
+                                <input type="number" hidden name = "value" value = "1">
+                                <input type="number" hidden name = "orderid" value = "">
+                                <input type="submit" value = "Xác nhận" class = "confirm-btn">
+                            </form>
+                            <form action="manageorderdetail">
+                                <input type="number" hidden name = "value" value = "2" >
+                                <input type="number" hidden name = "orderid" value = "">
+                                <input type="submit" value = "Hoàn thành" class = "success-btn">
+                            </form>
+                            
+                        </td>
+                    </tr>
+                    
+                </table>
+            </div>
+            <!--END INNERBLOCK-->
+        <!-- </div> -->
+
+    </body>
+
+</html>

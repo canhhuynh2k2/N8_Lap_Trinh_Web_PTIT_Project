@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chi tiết đơn hàng</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <script src="https://kit.fontawesome.com/ddee20c3c8.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel = "stylesheet" href = "assets/css/header.css">
     <link rel = "stylesheet" href = "assets/css/footer.css">
-    <link rel = "stylesheet" href = "assets/css/orders.css">
+    <link rel = "stylesheet" href = "assets/css/orderdetail.css">
 </head>
 <body>
     <header class="header">
@@ -110,29 +110,45 @@
         
     </header>
     <div class="main">
-        <h1 class = "your-orders">ĐƠN HÀNG CỦA BẠN</h1>
-        <table id="list-orders">
+        <h1 class = "your-orders">CHI TIẾT ĐƠN HÀNG</h1>
+        <table id="list-orderdetail">
             <tr class = "theader">
-                <th class = "order-id">Mã hóa đơn</th>
-                <th class = "customer-name">Khách hàng</th>
-                <th class = "phonenumber">Số điện thoại</th>
-                <th class = "address">Địa chỉ nhận hàng</th>
-                <th class = "total-money">Tổng tiền</th>
-                <th class ="order-date">Ngày đặt hàng</th>
-                <th class ="status">Trạng thái</th>
+                <th class = "orderdetail-id">Mã chi tiết đơn hàng</th>
+                <th class = "product-name">Tên sản phẩm</th>
+                <th class = "product-unit">Đơn vị tính</th>
+                <th class = "quantity">Số lượng</th>
+                <th class = "price">Đơn giá</th>
+                <th class = "total-price">Thành tiền</th>
+
             </tr>
             <tr class = "tbody">
-                <td class = "tbody__order-id"><a href="index.html">1</a></td>
-                <td class = "tbody__customer-name">Nguyễn Cảnh Huỳnh</td>
-                <td class = "tbody__phonenumber">0988092384</td>
-                <td class = "tbody__address">Số 12 Ngách 217/9 Trần Phú, Hà Đông, Hà Nội</td>
-                <td class = "tbody__total-money">12302943467 <span>VNĐ</span></td>
-                <td class ="tbody__order-date">2023-03-23 14:05:12</td>
-                <td class ="tbody__status">Đã giao</td>
-                
+                <td class = "tbody__orderdetail-id">1</td>1</td>
+                <td class = "tbody__product-name">
+                    <a class = "product-link" href="#">
+                        <img class = "product-image" src="assets/images/productDetail.jpg" alt="">
+                        <p class = "tbody__product-name">Rượu Mortlach 16 Năm Xách Tay </p>
+                    </a>
+                </td>
+                <td class = "tbody__product-unit">1 chai</td>
+                <td class = "tbody__quantity">3</td>
+                <td class = "tbody__price">160000000 <span> VNĐ</span></td>
+                <td class = "tbody__total-price">160000000 <span> VNĐ</span></td>
             </tr>
+        </tr>
+        <tr class = "tbody">
+            <td class = "tbody__orderdetail-id">1</td>1</td>
+            <td class = "tbody__product-name">
+                <a class = "product-link" href="#">
+                    <img class = "product-image" src="assets/images/productDetail.jpg" alt="">
+                    <p class = "tbody__product-name">Rượu Mortlach 16 Năm Xách Tay </p>
+                </a>
+            </td>
+            <td class = "tbody__quantity">3</td>
+            <td class = "tbody__price">160000000 <span> VNĐ</span></td>
             
+        </tr>
         </table>
+        
     </div>
     <footer>
         <div class="footer__advantage">

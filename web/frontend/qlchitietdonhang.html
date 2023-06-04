@@ -1,0 +1,224 @@
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="assets/css/manageorderdetail.css">
+        <link rel="stylesheet" href="./assets/admin/icon/themify-icons/themify-icons.css">
+        <script src = "./assets/admin/js/updateproduct.js"></script>
+        <title>Ruoungoai</title>
+    </head>
+
+    <body>
+        <!-- <div id="main"> -->
+            <!--BEGIN SIDEBAR-->
+            <div class="sidebar">
+                <div class="logo">
+                    <i class="ti-crown"></i>
+                    <p>Ruoungoai</p>
+                </div>
+                <div class="sidebar-menu">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <div class="menu taikhoan">
+                                    <i class="ti-user"></i>
+                                    <p>Tài Khoản</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="menu qlloairuou">
+                                    <i class="ti-stats-up"></i>
+                                    <p>Quản Lí Loại Rượu</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="menu qlwine">
+                                    <i class="ti-clipboard"></i>
+                                    <p>Quản Lí Rượu</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="menu phanhoi">
+                                    <i class="ti-comments"></i>
+                                    <p>Phản Hồi Khách Hàng</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="menu donhang">
+                                    <i class="ti-notepad"></i>
+                                    <p>Đơn Hàng</p>
+                                </div>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <div class="menu thongke">
+                                    <i class="ti-bar-chart"></i>
+                                    <p>Thống Kê</p>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!--END SIDEBAR-->
+
+            <!--BEGIN HEADER-->
+            <div class="header">
+                <div class="header-menu">
+                    <i class="ti-menu"></i>
+                </div>
+                <div class="nav">
+                    <div class="navbar">
+                        <ul>
+                            <li>
+                                <a href="#"><i class="ti-search"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="ti-bell"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="ti-email"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="user">
+                        <img src="./assets/img/avt1.jpg" alt="">
+                        <p>Nguyễn Văn A</p>
+                        <i class="ti-angle-down"></i>
+                    </div>
+                </div>
+            </div>
+            <!--END HEADER-->
+            <!--BEGIN INNERBLOCK-->
+            <div class="content-wrapper">
+                
+                <div class="account-info">
+                    <h3>THÔNG TIN TÀI KHOẢN ĐẶT HÀNG</h3>
+                    <div class="group account-name">
+                        <label for="account-name">Tên tài khoản: </label>
+                        <input type="text" readonly id = "account-name" value = "Nguyễn Cảnh Huỳnh">
+                    </div>
+                    
+                    <div class="group account-email">
+                        <label for="account-email">Email tài khoản: </label>
+                        <input type="email" readonly id = "account-email" value = "huynhnguyen@gmail.com">
+                    </div>
+                    
+                    <div class="group account-phonenumber">
+                        <label for="account-phonenumber">Số điện thoại: </label>
+                        <input type="text" readonly id = "account-phonenumber" value = "0988019473">
+                    </div>
+                    <div class="group account-address">
+                        <label for="account-address">Địa chỉ: </label>
+                        <input type="text" readonly id = "account-address" value = "217- Trần phú - Hà Đông - Hà Nội">
+                    </div>
+                    
+                </div>
+
+                <div class="order-info">
+                    <h3>THÔNG TIN ĐƠN HÀNG</h3>
+                    <div class="group receiver-name">
+                        <label for="receiver-name">Tên người nhận: </label>
+                        <input type="text" readonly id = "receiver-name" value = "Nguyễn Cảnh Huỳnh">
+                    </div>
+                    
+                    <div class="group receiver-email">
+                        <label for="receiver-email">Email người nhận: </label>
+                        <input type="email" readonly id = "receiver-email" value = "huynhnguyen@gmail.com">
+                    </div>
+                    
+                    <div class="group receiver-phonenumber">
+                        <label for="receiver-phonenumber">Số điện thoại người nhận: </label>
+                        <input type="text" readonly id = "receiver-phonenumber" value = "0988019473">
+                    </div>
+                    <div class="group receiver-address">
+                        <label for="receiver-address">Địa chỉ nhận hàng: </label>
+                        <input type="text" readonly id = "receiver-address" value = "217- Trần phú - Hà Đông - Hà Nội">
+                    </div>
+                    <div class="group receiver-note">
+                        <label for="receiver-note">Ghi chú đơn hàng: </label>
+                        <textarea name="" id="" cols="30" rows="8" id = "receiver-note" readonly>Giao hàng ngoài giờ hành chính</textarea>
+                    
+                    </div>
+                    <div class="group order-total-money">
+                        <label for="order-total-money">Tổng tiền: </label>
+                        <input type="text" readonly id = "order-total-money" value = "120000000 VNĐ">
+                    </div>
+
+                    <div class="group order-date">
+                        <label for="order-date">Ngày đặt hàng: </label>
+                        <input type="text" readonly id = "order-total-money" value = "2023-12-23">
+                    </div>
+                    <div class="group order-status">
+                        <label for="order-status">Trạng thái đơn hàng: </label>
+                        <input type="text" readonly id = "order-status" value = "Đang chờ">
+                    
+                    </div>
+
+                    <div class="group-btn">
+                        <form action="manageorderdetail">
+                            <input type="number" hidden name = "value" value = "-1">
+                            <input type="number" hidden name = "orderid" value = "">
+                            <input type="submit" value = "Hủy" class = "cancel-btn">
+                        </form>
+                        <form action="manageorderdetail">
+                            <input type="number" hidden name = "value" value = "1">
+                            <input type="number" hidden name = "orderid" value = "">
+                            <input type="submit" value = "Xác nhận" class = "confirm-btn">
+                        </form>
+                        <form action="manageorderdetail">
+                            <input type="number" hidden name = "value" value = "2" >
+                            <input type="number" hidden name = "orderid" value = "">
+                            <input type="submit" value = "Hoàn thành" class = "success-btn">
+                        </form>
+                    </div>
+                </div>
+                <h2 class = "your-orders">DANH SÁCH SẢN PHẨM ĐẶT HÀNG</h2>
+                <table id="list-orderdetail">
+                    <tr class = "theader">
+                        <th class = "orderdetail-id">Mã chi tiết đơn hàng</th>
+                        <th class = "product-name">Tên sản phẩm</th>
+                        <th class = "product-unit">Đơn vị tính</th>
+                        <th class = "quantity">Số lượng</th>
+                        <th class = "price">Đơn giá</th>
+                        <th class = "total-price">Thành tiền</th>
+
+                    </tr>
+                    <tr class = "tbody">
+                        <td class = "tbody__orderdetail-id">1</td>1</td>
+                        <td class = "tbody__product-name">
+                            <a class = "product-link" href="#">
+                                <img class = "product-image" src="assets/images/productDetail.jpg" alt="">
+                                <p class = "tbody__product-name">Rượu Mortlach 16 Năm Xách Tay </p>
+                            </a>
+                        </td>
+                        <td class = "tbody__product-unit">1 chai</td>
+                        <td class = "tbody__quantity">3</td>
+                        <td class = "tbody__price">160000000 <span> VNĐ</span></td>
+                        <td class = "tbody__total-price">160000000 <span> VNĐ</span></td>
+                    </tr>
+                </tr>
+                
+                </table>
+            <!--END INNERBLOCK-->
+        <!-- </div> -->
+
+    </body>
+
+</html>

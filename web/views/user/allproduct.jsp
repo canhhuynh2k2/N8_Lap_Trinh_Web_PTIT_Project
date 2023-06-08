@@ -5,7 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="java.util.*,java.util.List,java.util.ArrayList,model.Category,model.Product,java.util.Map" %>
+<%@page import="java.util.*,java.util.List,java.util.ArrayList,model.Category,model.Product,java.util.Map, model.User" %>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,60 +52,60 @@
         %>
         <div class="container">
             <header class="header">
-            <div class="heading">
-                <div class="logo">
-                    <img src="./assets/user/home/images/header/logo.PNG" alt="" class="logo-img">
+                <div class="heading">
+                    <div class="logo">
+                        <img src="./assets/user/home/images/header/logo.PNG" alt="" class="logo-img">
+                    </div>
+                    <form action="allproduct" class = "search">
+                        <input type="text" name ="searchname" class="search-bar" placeholder="Tìm kiếm...">
+                        <button class="fa-solid fa-magnifying-glass icon-search"  onclick="form.submit()"></button>
+                    </form>
+                    <div class="contact">
+                        <a href="#" class="hotline">Hotline: 190010001</a>
+                    </div>
                 </div>
-                <form action="allproduct" class = "search">
-                    <input type="text" name ="searchname" class="search-bar" placeholder="Tìm kiếm...">
-                    <button class="fa-solid fa-magnifying-glass icon-search"  onclick="form.submit()"></button>
-                </form>
-                <div class="contact">
-                    <a href="#" class="hotline">Hotline: 190010001</a>
-                </div>
-            </div>
-            <div class="header__nav">
+                <div class="header__nav">
 
-                <ul class = "header__nav-list">
-                    <li><a class = "header__nav-item" href = "home">Trang Chủ</a></li>
-                    <li><a class = "header__nav-item" href = "allproduct?catid=0">Tất cả</a></li>
-                        <%
-                            for(Category category: categories){
-                        %>
-                    <li class = "header__brand-appear"><a class = "header__nav-item" href = "allproduct?catid=<%=category.getId()%>"><%=category.getName()%></a>
-                        <div class="header__brand">
-                            <ul class="wine-list">
-                                <%
-                                    for(String branch:  branchesMap.get(category.getId())){
-                                %>
-                                <li><a href="allproduct?catid=<%=category.getId()%>&branchoption=<%=branch%>" class="wine-item"><%=branch%></a></li>
+                    <ul class = "header__nav-list">
+                        <li><a class = "header__nav-item" href = "home">Trang Chủ</a></li>
+                        <li><a class = "header__nav-item" href = "allproduct?catid=0">Tất cả</a></li>
+                            <%
+                                for(Category category: categories){
+                            %>
+                        <li class = "header__brand-appear"><a class = "header__nav-item" href = "allproduct?catid=<%=category.getId()%>"><%=category.getName()%></a>
+                            <div class="header__brand">
+                                <ul class="wine-list">
                                     <%
+                                        for(String branch:  branchesMap.get(category.getId())){
+                                    %>
+                                    <li><a href="allproduct?catid=<%=category.getId()%>&branchoption=<%=branch%>" class="wine-item"><%=branch%></a></li>
+                                        <%
+                                            }
+                                        %>
+
+                                </ul>
+                            </div>
+                        </li>
+                        <%
+                            }
+                        %>
+                        <li><a class = "header__nav-item" href = "#">LIÊN HỆ</a></li>
+                    </ul>
+                    <ul class = "header__nav-btn">
+                        <li class="header__nav-item user-btn -display-inline"><a href="user_profile"><i class="fa-solid fa-user"></i><span>${sessionScope.user.email}</span></a></li>
+                                    <% Cookie[] cart = request.getCookies();
+                                        int num = 0;
+                                        for(Cookie cookie : cart){
+                                            if(cookie.getName().equals("cart")){
+                                                num = cookie.getValue().split("_").length;
+                                            }
                                         }
                                     %>
+                        <li class = "header__nav-item -display-inline"><a href = "cart"><i class="fa-solid fa-cart-shopping"></i><div class="cart-count"><%= num%></div></a></li>
 
-                            </ul>
-                        </div>
-                    </li>
-                    <%
-                        }
-                    %>
-                    <li><a class = "header__nav-item" href = "#">LIÊN HỆ</a></li>
-                </ul>
-                <ul class = "header__nav-btn">
-                    <li class="header__nav-item user-btn -display-inline"><i class="fa-solid fa-user"></i></li>
-                        <% Cookie[] cart = request.getCookies();
-                            int num = 0;
-                            for(Cookie cookie : cart){
-                                if(cookie.getName().equals("cart")){
-                                    num = cookie.getValue().split("_").length;
-                                }
-                            }
-                    %>
-                    <li class = "header__nav-item -display-inline"><a href = "cart"><i class="fa-solid fa-cart-shopping"></i><div class="cart-count"><%= num%></div></a></li>
-
-                </ul>
-            </div>
-        </header>
+                    </ul>
+                </div>
+            </header>
             <div class="nav-bar">
                 <%
                 if(catId.equals("0")){

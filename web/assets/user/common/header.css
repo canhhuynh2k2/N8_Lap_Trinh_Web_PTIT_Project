@@ -110,7 +110,7 @@
 }
 .header__nav-btn{
     margin-right: 24px;
-    flex: 1;
+    /*flex: 1;*/
 }
 .header__nav-list{
     font-size: 18px;
@@ -126,6 +126,14 @@
 .-display-inline{
     display: inline-block;
     line-height: 18px;
+}
+
+.header__nav-item > a {
+    text-decoration: none;
+}
+
+.header__nav-item > a > span {
+    font-size: 18px;
 }
 
 /* brand */

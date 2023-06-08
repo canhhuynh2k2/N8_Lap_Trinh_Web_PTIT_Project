@@ -36,7 +36,6 @@
                     <input type="text" name ="searchname" class="search-bar" placeholder="Tìm kiếm...">
                     <button class="fa-solid fa-magnifying-glass icon-search"  onclick="form.submit()"></button>
                 </form>
-
                 <div class="contact">
                     <a href="#" class="hotline">Hotline: 190010001</a>
                 </div>
@@ -68,15 +67,20 @@
                     %>
                     <li><a class = "header__nav-item" href = "#">LIÊN HỆ</a></li>
                 </ul>
-
                 <ul class = "header__nav-btn">
                     <li class="header__nav-item user-btn -display-inline"><i class="fa-solid fa-user"></i></li>
-                    <li class = "header__nav-item -display-inline"><i class="fa-solid fa-cart-shopping"></i></li>
+                        <% Cookie[] cart = request.getCookies();
+                            int num = 0;
+                            for(Cookie cookie : cart){
+                                if(cookie.getName().equals("cart")){
+                                    num = cookie.getValue().split("_").length;
+                                }
+                            }
+                    %>
+                    <li class = "header__nav-item -display-inline"><a href = "cart"><i class="fa-solid fa-cart-shopping"></i><div class="cart-count"><%= num%></div></a></li>
 
                 </ul>
-
             </div>
-
         </header>
         <div class = "slider-container">
             <i class="fa-solid fa-angle-left prev-btn"></i>

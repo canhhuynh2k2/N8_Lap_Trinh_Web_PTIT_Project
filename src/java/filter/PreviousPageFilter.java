@@ -106,8 +106,9 @@ public class PreviousPageFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpSession session = req.getSession();
         String previousUri = req.getRequestURI();
+        String queryUri = req.getQueryString();
         session.removeAttribute("previousUri");
-        session.setAttribute("previousUri", previousUri);
+        session.setAttribute("previousUri", previousUri + "?" + queryUri);
         
 	Throwable problem = null;
 	try {

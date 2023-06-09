@@ -32,12 +32,14 @@
         <url-pattern>/user_change_password</url-pattern>
         <url-pattern>/user_update_profile</url-pattern>
         <url-pattern>/user_profile</url-pattern>
+        <url-pattern>/productdetail</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>UserSignInFilter</filter-name>
         <url-pattern>/user_change_password</url-pattern>
         <url-pattern>/user_update_profile</url-pattern>
         <url-pattern>/user_profile</url-pattern>
+        <url-pattern>/AddComments</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>AdminAccessFilter</filter-name>

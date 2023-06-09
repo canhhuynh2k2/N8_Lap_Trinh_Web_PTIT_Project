@@ -30,7 +30,7 @@
         <header class="header">
             <div class="heading">
                 <div class="logo">
-                    <img src="./assets/user/home/images/header/logo.PNG" alt="" class="logo-img">
+                    <a href="home"><img src="./assets/user/home/images/header/logo.PNG" alt="" class="logo-img"></a>
                 </div>
                 <form action="allproduct" class = "search">
                     <input type="text" name ="searchname" class="search-bar" placeholder="Tìm kiếm...">
@@ -65,7 +65,6 @@
                     <%
                         }
                     %>
-                    <li><a class = "header__nav-item" href = "#">LIÊN HỆ</a></li>
                 </ul>
                 <ul class = "header__nav-btn">
                     <li class="header__nav-item user-btn -display-inline"><a href="user_profile"><i class="fa-solid fa-user"></i><span>${sessionScope.user.email}</span></a></li>

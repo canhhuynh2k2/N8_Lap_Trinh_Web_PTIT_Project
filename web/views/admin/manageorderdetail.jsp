@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*,model.Product,model.Order,model.OrderDetail" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,16 +31,16 @@
                 <div class="sidebar-menu">
                     <ul>
                         <li>
-                            <a href="#">
-                                <div class="menu taikhoan">
+                            <a href="list_user">
+                                <div class="menu taikhoan sidebar-menu--active">
                                     <i class="ti-user"></i>
-                                    <p>Tài Khoản</p>
+                                    <p>Quản Lí Tài Khoản</p>
                                 </div>
                             </a>
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="categories">
                                 <div class="menu qlloairuou">
                                     <i class="ti-stats-up"></i>
                                     <p>Quản Lí Loại Rượu</p>
@@ -48,7 +49,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="products">
                                 <div class="menu qlwine">
                                     <i class="ti-clipboard"></i>
                                     <p>Quản Lí Rượu</p>
@@ -57,16 +58,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
-                                <div class="menu phanhoi">
-                                    <i class="ti-comments"></i>
-                                    <p>Phản Hồi Khách Hàng</p>
-                                </div>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
+                            <a href="manageorders">
                                 <div class="menu donhang">
                                     <i class="ti-notepad"></i>
                                     <p>Đơn Hàng</p>
@@ -79,7 +71,7 @@
                                 <div class="menu thongke">
                                     <i class="ti-bar-chart"></i>
                                     <p>Thống Kê</p>
-                                </div>
+                                </div> 
                             </a>
                         </li>
                     </ul>
@@ -89,29 +81,8 @@
 
             <!--BEGIN HEADER-->
             <div class="header">
-                <div class="header-menu">
-                    <i class="ti-menu"></i>
-                </div>
-                <div class="nav">
-                    <div class="navbar">
-                        <ul>
-                            <li>
-                                <a href="#"><i class="ti-search"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="ti-bell"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="ti-email"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="user">
-                        <img src="./assets/img/avt1.jpg" alt="">
-                        <p>Nguyễn Văn A</p>
-                        <i class="ti-angle-down"></i>
-                    </div>
-                </div>
+                <c:set value="${sessionScope.user}" var="user"/>
+                <a href="user_profile">${user.email}</a>
             </div>
             <!--END HEADER-->
             <!--BEGIN INNERBLOCK-->

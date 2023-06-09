@@ -115,7 +115,7 @@ public class AdminAccessFilter implements Filter {
             return;
         } else if (user.getRole().getId() != 1) {
             req.setAttribute("accessDined", "Ban Khong Co Quyen Truy Cap!!!");
-            req.getRequestDispatcher("user_home").forward(request, response);
+            req.getRequestDispatcher("home").forward(request, response);
             return;
         }
 

@@ -88,10 +88,6 @@
         <servlet-class>controller.user.AddToCart</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>UserSignOut</servlet-name>
-        <servlet-class>controller.user.UserSignOut</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AdminSignIn</servlet-name>
         <servlet-class>controller.admin.AdminSignIn</servlet-class>
     </servlet>

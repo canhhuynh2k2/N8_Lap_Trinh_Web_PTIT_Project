@@ -6,6 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*,model.Product,model.Order" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -88,29 +89,8 @@
 
             <!--BEGIN HEADER-->
             <div class="header">
-                <div class="header-menu">
-                    <i class="ti-menu"></i>
-                </div>
-                <div class="nav">
-                    <div class="navbar">
-                        <ul>
-                            <li>
-                                <a href="#"><i class="ti-search"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="ti-bell"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="ti-email"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="user">
-                        <img src="./assets/img/avt1.jpg" alt="">
-                        <p>Nguyễn Văn A</p>
-                        <i class="ti-angle-down"></i>
-                    </div>
-                </div>
+                <c:set value="${sessionScope.user}" var="user"/>
+                <a href="user_profile">${user.email}</a>
             </div>
             <!--END HEADER-->
             <!--BEGIN INNERBLOCK-->

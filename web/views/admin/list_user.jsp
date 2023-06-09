@@ -56,7 +56,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="manageorders">
                                 <div class="menu donhang">
                                     <i class="ti-notepad"></i>
                                     <p>Đơn Hàng</p>
@@ -80,7 +80,7 @@
             <!--BEGIN HEADER-->
             <div class="header">
                 <c:set value="${sessionScope.user}" var="user"/>
-                <a href="user_profile">${user.email}</a>
+                <a href="user_profile"><i class="fa-solid fa-user"></i>${user.email}</a>
             </div>
             <!--END HEADER-->
 

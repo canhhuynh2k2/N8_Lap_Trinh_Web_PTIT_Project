@@ -34,6 +34,10 @@ a:hover {
   font-weight: 550;
 }
 
+.user-btn span {
+    visibility: visible;
+}
+
 .user-info {
   display: flex;
   justify-content: center;

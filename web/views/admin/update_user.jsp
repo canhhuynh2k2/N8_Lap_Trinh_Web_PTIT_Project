@@ -38,7 +38,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="categories">
                                 <div class="menu qlloairuou">
                                     <i class="ti-stats-up"></i>
                                     <p>Quản Lí Loại Rượu</p>
@@ -47,7 +47,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="products">
                                 <div class="menu qlwine">
                                     <i class="ti-clipboard"></i>
                                     <p>Quản Lí Rượu</p>
@@ -56,7 +56,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="manageorders">
                                 <div class="menu donhang">
                                     <i class="ti-notepad"></i>
                                     <p>Đơn Hàng</p>
@@ -79,11 +79,8 @@
 
             <!--BEGIN HEADER-->
             <div class="header">
-                <div class="nav">
-                    <div class="user">
-                        <p>Nguyễn Văn A</p>
-                    </div>
-                </div>
+                <c:set value="${sessionScope.user}" var="user"/>
+                <a href="user_profile">${user.email}</a>
             </div>
             <!--END HEADER-->
 

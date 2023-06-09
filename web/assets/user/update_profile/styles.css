@@ -35,6 +35,10 @@ a:hover {
   font-weight: 550;
 }
 
+.user-btn span {
+    visibility: visible;
+}
+
 .user-info {
   padding: 20px;
   display: flex;

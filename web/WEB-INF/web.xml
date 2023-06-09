@@ -155,6 +155,14 @@
         <servlet-name>AddToCart</servlet-name>
         <url-pattern>/addtocart</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignOut</servlet-name>
+        <url-pattern>/sign_out</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserUpdateProfile</servlet-name>
+        <url-pattern>/user_update_profile</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30

@@ -36,7 +36,6 @@
                     <input type="text" name ="searchname" class="search-bar" placeholder="Tìm kiếm...">
                     <button class="fa-solid fa-magnifying-glass icon-search"  onclick="form.submit()"></button>
                 </form>
-
                 <div class="contact">
                     <a href="#" class="hotline">Hotline: 190010001</a>
                 </div>
@@ -68,15 +67,20 @@
                     %>
                     <li><a class = "header__nav-item" href = "#">LIÊN HỆ</a></li>
                 </ul>
-
                 <ul class = "header__nav-btn">
-                    <li class="header__nav-item user-btn -display-inline"><i class="fa-solid fa-user"></i></li>
-                    <li class = "header__nav-item -display-inline"><i class="fa-solid fa-cart-shopping"></i></li>
+                    <li class="header__nav-item user-btn -display-inline"><a href="user_profile"><i class="fa-solid fa-user"></i><span>${sessionScope.user.email}</span></a></li>
+                                <% Cookie[] cart = request.getCookies();
+                                    int num = 0;
+                                    for(Cookie cookie : cart){
+                                        if(cookie.getName().equals("cart")){
+                                            num = cookie.getValue().split("_").length;
+                                        }
+                                    }
+                                %>
+                    <li class = "header__nav-item -display-inline"><a href = "cart"><i class="fa-solid fa-cart-shopping"></i><div class="cart-count"><%= num%></div></a></li>
 
                 </ul>
-
             </div>
-
         </header>
         <div class = "slider-container">
             <i class="fa-solid fa-angle-left prev-btn"></i>
@@ -165,13 +169,13 @@
                     </li>
                     <li class = "footer-content-item content__product-list"><h3>Danh mục sản phẩm</h3>
                         <ul>
-                        <%
-                            for(int i = 0; i < Math.min(4, categories.size()); i++){
+                            <%
+                                for(int i = 0; i < Math.min(4, categories.size()); i++){
                             %>
-                             <li><a href="allproduct?catid=<%=categories.get(i).getId()%>"><%=categories.get(i).getName()%></a></li>
-                        <%
-                            }
-                        %>
+                            <li><a href="allproduct?catid=<%=categories.get(i).getId()%>"><%=categories.get(i).getName()%></a></li>
+                                <%
+                                    }
+                                %>
                         </ul>
                     </li>
                     <li class ="footer-content-item content_shop-system"><h3>Hệ thống cửa hàng</h3>
@@ -208,14 +212,14 @@
         <script src="./assets/user/home/home.js"></script>
 
         <script type="text/javascript">
-            const message = () => {
-                var accessDined = "${requestScope.accessDined}";
-                if (accessDined !== "") {
-                    alert(accessDined);
-                }
-            }
-            
-            setTimeout(message, 800);
+                        const message = () => {
+                            var accessDined = "${requestScope.accessDined}";
+                            if (accessDined !== "") {
+                                alert(accessDined);
+                            }
+                        }
+
+                        setTimeout(message, 800);
         </script>
 
     </body>

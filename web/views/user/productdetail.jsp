@@ -35,7 +35,7 @@
         <header class="header">
             <div class="heading">
                 <div class="logo">
-                    <img src="assets/images/header/logo.PNG" alt="" class="logo-img">
+                    <img src="./assets/user/home/images/header/logo.PNG" alt="" class="logo-img">
                 </div>
                 <form action="allproduct" class = "search">
                     <input type="text" name ="searchname" class="search-bar" placeholder="Tìm kiếm...">
@@ -73,22 +73,19 @@
                     <li><a class = "header__nav-item" href = "#">LIÊN HỆ</a></li>
                 </ul>
                 <ul class = "header__nav-btn">
-                    <li class="header__nav-item user-btn -display-inline"><i class="fa-solid fa-user"></i></li>
-                        <% Cookie[] cart = request.getCookies();
-                            int num = 0;
-                            for(Cookie cookie : cart){
-                                if(cookie.getName().equals("cart")){
-                                    num = cookie.getValue().split("_").length;
-                                }
-                            }
-                    %>
+                    <li class="header__nav-item user-btn -display-inline"><a href="user_profile"><i class="fa-solid fa-user"></i><span>${sessionScope.user.email}</span></a></li>
+                                <% Cookie[] cart = request.getCookies();
+                                    int num = 0;
+                                    for(Cookie cookie : cart){
+                                        if(cookie.getName().equals("cart")){
+                                            num = cookie.getValue().split("_").length;
+                                        }
+                                    }
+                                %>
                     <li class = "header__nav-item -display-inline"><a href = "cart"><i class="fa-solid fa-cart-shopping"></i><div class="cart-count"><%= num%></div></a></li>
 
                 </ul>
-
             </div>
-
-
         </header>
         <div class = "header-nav"><%=product.getCategory().getName() + " > " + product.getBranch() + " > " + product.getName() %></div>
         <div class = "main">
@@ -137,9 +134,9 @@
                             <input class="plus" type="button" value="+">
                         </div>
                         <a href ="addtocart?id=<%=product.getId()%>&quantity=1" class = "add-to-card-btn"><button id = "add-to-cart"><strong>Thêm vào giỏ hàng</strong></button><br/></a>
-                        
+
                         <a href ="checkout?id=<%=product.getId()%>&quantity=1" class = "buy-now-btn"><input type ="submit" id = "buy-now" value = "Mua ngay"></a>
-                
+
                     </div>
 
 
@@ -228,26 +225,19 @@
                 <ul class="footer-content-list">
                     <li class = "footer-content-item content__about"><h3>Giới thiệu</h3>
                         <ul>
-                            <li><a href="#">Về chúng tôi</a></li>
+                            <li><a href="home">Về chúng tôi</a></li>
                             <li><a href="#">Bài viết - Blog</a></li>
                         </ul>
                     </li>
                     <li class = "footer-content-item content__product-list"><h3>Danh mục sản phẩm</h3>
                         <ul>
-                            <li><a href="#">RƯỢU WHISKY</a></li>
-                            <li><a href = "#">RƯỢU SINGLE MALT</a></li>
-                            <li><a href="#">RƯỢU COGNAC</a></li>
-                            <li><a href="#">RƯỢU NHẬT BẢN</a></li>
-                            <li><a href="#">RƯỢU VANG</a></li>
-                        </ul>
-                    </li>
-                    <li class = "footer-content-item content__policy"><h3>Chính sách</h3>
-                        <ul>
-                            <li><a href="#">Chính sách bảo mật</a></li>
-                            <li><a href="#">Hướng dẫn mua hàng - Thanh toán</a></li>
-                            <li><a href="#">Chính sách đổi trả</a></li>
-                            <li><a href="#">Chính sách giao hàng</a></li>
-                            <li><a href="#">Câu hỏi thường gặp</a></li>
+                            <%
+                                for(int i = 0; i < Math.min(4, categories.size()); i++){
+                            %>
+                            <li><a href="allproduct?catid=<%=categories.get(i).getId()%>"><%=categories.get(i).getName()%></a></li>
+                                <%
+                                    }
+                                %>
                         </ul>
                     </li>
                     <li class ="footer-content-item content_shop-system"><h3>Hệ thống cửa hàng</h3>
@@ -280,7 +270,7 @@
                 <p class = "copyright-item">Các sản phẩm rượu không dành cho người dưới 18 tuổi và phụ nữ đang mang thai.</p>
                 <p class = "copyright-item">©Copyright Nhóm 8 LTWeb PTIT 2023</p>
             </div>
-        </footer>  
+        </footer>
         <script src = "./assets/user/product_detail/productdetail.js"></script>
 
     </body>

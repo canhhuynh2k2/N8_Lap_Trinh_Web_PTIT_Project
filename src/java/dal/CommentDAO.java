@@ -40,7 +40,7 @@ public class CommentDAO extends ConnectDB{
         ArrayList<Comment> comments = new ArrayList<>();
         String sql = "select tblcomments.id as comment_id, tblusers.id as user_id, tblusers.fullname, tblcomments.content, tblcomments.rate "
                 + "from dbo.comments tblcomments inner join dbo.users tblusers on  tblcomments.user_id = tblusers.id "
-                + "and tblcomments.product_id = product_Id";
+                + "and tblcomments.product_id = " + product_Id + ";";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();

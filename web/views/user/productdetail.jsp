@@ -165,7 +165,7 @@
                         <td><%= listComment.get(i).getContent()%></td>
                         <td><%= listComment.get(i).getRate()%></td> 
                         <td>    
-                            <% if (listComment.get(i).getUser().getId() == user.getId()) {
+                            <% if (user != null && listComment.get(i).getUser().getId() == user.getId()) {
                         
                             %> 
                             <a href="DeleteComments?cid=<%=listComment.get(i).getId() %>&productId=<%=product.getId() %>">Xoá Comment</a>

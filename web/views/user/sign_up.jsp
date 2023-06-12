@@ -20,7 +20,7 @@
 
 <body>
   <div class="back-to-home">
-    <a href="user_home">Trang Chủ</a>
+    <a href="home">Trang Chủ</a>
   </div>
   <div class="inner-wrap">
     <div class="header">

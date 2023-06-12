@@ -20,7 +20,7 @@
 
 <body>
   <div class="back-to-home">
-    <a href="user_home">Trang Chủ</a>
+    <a href="home">Trang Chủ</a>
   </div>
   <div class="inner-wrap">
     <div class="header">
@@ -38,7 +38,7 @@
         <small id="wrong-user">Error</small>
       </div>
       <div class="form-group">
-        <input type="password" placeholder="Mật khẩu mới" id="password" name="password">
+        <input type="password" placeholder="Nhập mật khẩu" id="password" name="password">
         <span class="success-icon">
           <i class="fa-solid fa-check"></i>
         </span>

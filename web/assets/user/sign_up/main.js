@@ -182,15 +182,6 @@ email.addEventListener("input", () => {
   setDefaultFor(email)
 })
 
-password.addEventListener("blur", () => {
-  if (isGoodPassword(password.value.trim())) {
-    setSuccessFor(password)
-  } else {
-    setErrorFor(password, "Mật khẩu ít nhất 8 kí tự trong đó có chứa 1 chữ thường, 1 chữ hoa, 1 chữ số");
-    password.focus()
-  }
-})
-
 password.addEventListener("input", () => {
   confirmPassword.value = "";
   setDefaultFor(confirmPassword);

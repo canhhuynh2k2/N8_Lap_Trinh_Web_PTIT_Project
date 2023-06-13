@@ -66,7 +66,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                            <a href="admin-statsitic-servlet">
                                 <div class="menu thongke">
                                     <i class="ti-bar-chart"></i>
                                     <p>Thống Kê</p>

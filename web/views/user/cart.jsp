@@ -88,11 +88,22 @@
         </header>
         <div class="main">
             <% ArrayList<Pair<Product, Integer> > cartItems = (ArrayList<Pair<Product, Integer> >)request.getAttribute("cart"); %>
-
+            <% 
+               if(cartItems == null){
+            %>
+            <div id = "empty-cart-note">
+                <p class ="empty-cart-note">Không có sản phẩm nào trong giỏ hàng</p>
+                
+            </div>
+            <% 
+                }else{
+                       
+            %>
             <table class="product-list-cart">
                 <tr class="product-list-subject">
                     <th class="title-subject product-subject">Sản phẩm</th>
-                    <th class="price-subject product-subject">Giá</th>
+                    <th class = "origin-price-subject product-subject">Giá bán</th>
+                    <th class="price-subject product-subject">Giá khuyến mại</th>
                     <th class="quantity-subject product-subject">Số lượng</th>
                     <th class="temporary-price-subject product-subject">Tạm tính</th>
                 </tr>
@@ -110,14 +121,29 @@
                         <p hidden class = "max-quantity"><%= item.getKey().getQuantity() %></p>
                     </td>
                     <%
-                        String tmp = String.valueOf(item.getKey().getPrice());
+                        String op = String.valueOf(item.getKey().getPrice());
                         int k = 0;
                         String price = "";
-                        for(int j = tmp.length() - 1; j >= 0; j--){
-                            price = tmp.charAt(j) + price;
+                        for(int j = op.length() - 1; j >= 0; j--){
+                            price = op.charAt(j) + price;
                             k++;
                             if(k == 3 && j != 0){
                                 price = "." + price;
+                                k = 0;
+                            }
+                        }
+                    
+                    %>
+                    <td class = "origin-price"><%= price %> VNĐ</td>
+                    <%
+                        String tmp = String.valueOf(item.getKey().getPrice_sale());
+                        k = 0;
+                        String salePrice = "";
+                        for(int j = tmp.length() - 1; j >= 0; j--){
+                            salePrice = tmp.charAt(j) + salePrice;
+                            k++;
+                            if(k == 3 && j != 0){
+                                salePrice = "." + salePrice;
                                 k = 0;
                             }
                         }
@@ -134,7 +160,7 @@
                             }
                         }
                     %>
-                    <td class = "price-product"><%= price %> VNĐ</td>
+                    <td class = "price-product"><%= salePrice %> VNĐ</td>
                     <td class = "quantity-product">
                         <a class="minus" href = "updatecart?update=<%= item.getKey().getId() %>&quantity=<%= item.getValue() %>">-</a>
                         <input class="input-qty" max="<%= item.getKey().getQuantity() %>" min="1" readonly name="" type="number" value="<%= item.getValue() %>" >
@@ -166,6 +192,7 @@
                 <strong class = "price-total">Tổng: <span><%= totalPrice %></span> VNĐ</strong>
                 <input id = "payment-btn" type="submit" value = "THANH TOÁN">
             </form>
+                <%} %>
         </div>
         <footer>
             <div class="footer__advantage">

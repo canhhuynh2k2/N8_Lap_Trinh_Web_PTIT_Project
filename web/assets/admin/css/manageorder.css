@@ -284,3 +284,27 @@ tr.tbody:hover td{
     cursor: pointer;
     background-color: rgb(168, 178, 217);
 }
+
+.invalid{
+    display: none;
+}
+.page-bar{
+    
+    margin: 12px 500px;
+}
+.page{
+    
+    margin: 8px auto;
+    padding: 8px 14px;
+    background-color: #f06464;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 550;
+}
+.page:hover{
+    cursor: pointer;
+    opacity: 0.7;
+}
+.hightlight{
+    background-color: #8b9642;
+}

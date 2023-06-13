@@ -84,12 +84,18 @@ public class UserCart extends HttpServlet {
         Cookie[] cookies = request.getCookies();
         for(Cookie cookie : cookies){
             if(cookie.getName().equals("cart")){
-                List<Pair<Product, Integer> >list = cartDAO.getCartItems(cookie.getValue());
-                request.setAttribute("cart", list);
-                request.getRequestDispatcher("/views/user/cart.jsp").forward(request, response);
+                if(!cookie.getValue().equals("")){
+                    List<Pair<Product, Integer> >list = cartDAO.getCartItems(cookie.getValue());
+                    request.setAttribute("cart", list);
+                }
+                else{
+                    cookie.setMaxAge(0);
+                    response.addCookie(cookie);
+                }
+                
             }
         }
-        
+        request.getRequestDispatcher("/views/user/cart.jsp").forward(request, response);
     } 
 
     /** 

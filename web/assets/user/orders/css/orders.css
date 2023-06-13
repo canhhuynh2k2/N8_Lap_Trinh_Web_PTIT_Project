@@ -107,3 +107,10 @@ tr.tbody:hover td{
     cursor: pointer;
     background-color: rgb(168, 178, 217);
 }
+.cancel-btn{
+    padding: 4px 6px;
+    background-color: #ed3131;
+    color: antiquewhite;
+    margin-top: 4px;
+    font-size: 15x;
+}

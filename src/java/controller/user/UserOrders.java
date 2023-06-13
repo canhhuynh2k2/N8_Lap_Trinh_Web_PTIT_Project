@@ -95,7 +95,8 @@ public class UserOrders extends HttpServlet {
         }
         
     } 
-
+    
+    
     /** 
      * Handles the HTTP <code>POST</code> method.
      * @param request servlet request
@@ -106,7 +107,17 @@ public class UserOrders extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        OrderDAO orderDAO = new OrderDAO();
+        try {
+            int id = Integer.parseInt(request.getParameter("orderid"));
+            orderDAO.updateStatus(id, -1);
+            Order order = orderDAO.getById(id);
+            System.out.println(order.getStatus());
+            response.sendRedirect("orders");
+           
+        } catch (SQLException ex) {
+            
+        }
     }
 
     /** 

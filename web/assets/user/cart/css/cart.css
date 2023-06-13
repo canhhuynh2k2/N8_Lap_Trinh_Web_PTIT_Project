@@ -125,3 +125,18 @@ input.number-to-text::-webkit-inner-spin-button {
 input[type=number].number-to-text {
     -moz-appearance: textfield;
 }
+#empty-cart-note{
+    display: flex;
+    flex-direction: column;
+}
+.empty-cart-note{
+   margin: 15px auto;
+   font-size: 20px;
+   color: red;
+   
+}
+.fa-regular{
+    font-size: 50px;
+    color: #000;
+    margin: 14px auto;
+}

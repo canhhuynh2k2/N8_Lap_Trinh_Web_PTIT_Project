@@ -97,14 +97,18 @@ public class UpdateCart extends HttpServlet {
                         }
                     }
                     cookie.setMaxAge(0);
-                    if(value.charAt(0) == '_') value = value.substring(1);
-                    Cookie newCookie = new Cookie("cart", value);
-                    newCookie.setMaxAge(60 * 60 * 24 * 7);
-                    response.addCookie(newCookie);
+                    response.addCookie(cookie);
+                    if(!value.equals("") && value.charAt(0) == '_') value = value.substring(1);
+                    if(!value.equals("")){
+                        Cookie newCookie = new Cookie("cart", value);
+                        newCookie.setMaxAge(60 * 60 * 24 * 7);
+                        response.addCookie(newCookie);
+                    }
+                    
                 }
             }  
         }
-        response.sendRedirect("cart");
+        response.sendRedirect("/webn8/cart");
     } 
 
     /** 

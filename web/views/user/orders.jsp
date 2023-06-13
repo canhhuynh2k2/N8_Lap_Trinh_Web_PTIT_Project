@@ -136,10 +136,19 @@
                     <td class = "tbody__total-money"><%= totalPrice %><span> VNĐ</span></td>
                     <td class ="tbody__order-date"><%= order.getOrder_date() %></td>
                     <td class = "tbody__note"><%= order.getNote() %></td>
-                    <td class ="tbody__status"><%= status %></td>
+                    <td class ="tbody__status"><%= status %>
+                    <% if(order.getStatus() == 0){ %>
+                    <form action ="orders" method ="POST">
+                        <input type="text" name ="orderid" value="<%= order.getId()%>" hidden>
+                        <input type="submit" class = "cancel-btn" value = "Hủy đơn hàng">
+                    </form>
+                    <% 
+                        } 
+                    %>
+                    </td>
 
                 </tr>
-                <%
+                <% 
                     }
                 %>
             </table>

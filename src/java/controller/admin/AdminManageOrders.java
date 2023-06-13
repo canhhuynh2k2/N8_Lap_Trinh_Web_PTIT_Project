@@ -68,7 +68,6 @@ public class AdminManageOrders extends HttpServlet {
             request.setAttribute("orders", orders);
             request.getRequestDispatcher("views/admin/manageorders.jsp").forward(request, response);
         } catch (SQLException ex) {
-
             Logger.getLogger(UserOrders.class.getName()).log(Level.SEVERE, null, ex);
         }
     } 
@@ -96,7 +95,6 @@ public class AdminManageOrders extends HttpServlet {
         }
         
     }
-
     /** 
      * Returns a short description of the servlet.
      * @return a String containing servlet description

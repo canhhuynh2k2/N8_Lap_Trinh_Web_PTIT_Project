@@ -139,7 +139,7 @@ public class OrderDaoStatsitic extends ConnectDB{
             prepare.execute();
             ResultSet resultSet = prepare.getResultSet();
             List<OrderStatsitic> orders = new ArrayList<>();
-            if(resultSet.next())
+            while(resultSet.next())
             {
                 OrderStatsitic order = new OrderStatsitic();
                 
@@ -183,7 +183,7 @@ public class OrderDaoStatsitic extends ConnectDB{
             prepare.execute();
             ResultSet resultSet = prepare.getResultSet();
             List<Product> products = new ArrayList<>();
-            if(resultSet.next())
+            while(resultSet.next())
             {
                 Product product = new Product();
                 product.setQuantity(resultSet.getInt(2));

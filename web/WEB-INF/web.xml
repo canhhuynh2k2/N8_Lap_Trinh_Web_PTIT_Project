@@ -29,6 +29,9 @@
         <url-pattern>/user_update_profile</url-pattern>
         <url-pattern>/user_profile</url-pattern>
         <url-pattern>/productdetail</url-pattern>
+        <url-pattern>/admin-statsitic-servlet</url-pattern>
+        <url-pattern>/cart</url-pattern>
+        <url-pattern>/checkout</url-pattern>
     </filter-mapping>
     <filter-mapping>
         <filter-name>UserSignInFilter</filter-name>
@@ -50,6 +53,7 @@
         <url-pattern>/update_category</url-pattern>
         <url-pattern>/updateproduct</url-pattern>
         <url-pattern>/update_user</url-pattern>
+        <url-pattern>/admin-statsitic-servlet</url-pattern>
     </filter-mapping>
     <servlet>
         <servlet-name>UserSignUp</servlet-name>

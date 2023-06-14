@@ -59,7 +59,18 @@ public class UserSignIn extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("views/user/sign_in.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user != null) {
+            String previousUri = (String) session.getAttribute("previousUri");
+            if (previousUri != null) {
+                response.sendRedirect(previousUri);
+            } else {
+                response.sendRedirect("home");
+            }
+        } else {
+            request.getRequestDispatcher("views/user/sign_in.jsp").forward(request, response);
+        }
     }
 
     /**

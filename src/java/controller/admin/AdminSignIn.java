@@ -59,7 +59,18 @@ public class AdminSignIn extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("views/admin/sign_in.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
+        if (user != null && user.getRole().getId() == 1) {
+            String previousUri = (String) session.getAttribute("previousUri");
+            if (previousUri != null) {
+                response.sendRedirect(previousUri);
+            } else {
+                response.sendRedirect("list_user");
+            }
+        } else {
+            request.getRequestDispatcher("views/admin/sign_in.jsp").forward(request, response);
+        }
     }
 
     /**

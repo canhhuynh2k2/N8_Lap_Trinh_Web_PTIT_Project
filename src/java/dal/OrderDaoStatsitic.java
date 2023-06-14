@@ -14,8 +14,8 @@ import model.OrderStatsitic;
 import model.Product;
 
 public class OrderDaoStatsitic extends ConnectDB {
-    //Lay ra 10 san pham ban chay nhat
 
+    //Lay ra 10 san pham ban chay nhat
     public List<Product> get10MostSell() {
         String query = "SELECT TOP 10\n"
                 + "    P.name AS product_name,\n"
@@ -181,29 +181,30 @@ public class OrderDaoStatsitic extends ConnectDB {
     public List<OrderStatsitic> getMoney6LastestMonths() {
         String query = "SELECT\n"
                 + "    order_month,\n"
-                + "    total_revenue,\n"
+                + "    SUM(total_revenue) AS total_monthly_revenue,\n"
                 + "    best_selling_product\n"
                 + "FROM (\n"
                 + "    SELECT\n"
                 + "        DATEADD(month, DATEDIFF(month, 0, O.order_date), 0) AS order_month,\n"
-                + "        SUM(O.total_money) AS total_revenue,\n"
-                + "        P.name AS best_selling_product,\n"
-                + "        ROW_NUMBER() OVER (PARTITION BY DATEADD(month, DATEDIFF(month, 0, O.order_date), 0) ORDER BY SUM(OD.quantity) DESC) AS rn\n"
+                + "        O.total_money AS total_revenue,\n"
+                + "        (\n"
+                + "            SELECT TOP 1 P.name\n"
+                + "            FROM Orders O2\n"
+                + "            JOIN Order_Details OD ON O2.id = OD.order_id\n"
+                + "            JOIN Products P ON OD.product_id = P.id\n"
+                + "            WHERE\n"
+                + "                O2.status = 1\n"
+                + "                AND DATEADD(month, DATEDIFF(month, 0, O2.order_date), 0) = DATEADD(month, DATEDIFF(month, 0, O.order_date), 0)\n"
+                + "            GROUP BY P.name\n"
+                + "            ORDER BY SUM(OD.quantity) DESC\n"
+                + "        ) AS best_selling_product\n"
                 + "    FROM\n"
                 + "        Orders O\n"
-                + "    JOIN\n"
-                + "        Order_Details OD ON O.id = OD.order_id\n"
-                + "    JOIN\n"
-                + "        Products P ON OD.product_id = P.id\n"
                 + "    WHERE\n"
-                + "        O.order_date >= DATEADD(month, -6, GETDATE())\n"
-                + "    GROUP BY\n"
-                + "        DATEADD(month, DATEDIFF(month, 0, O.order_date), 0),\n"
-                + "        P.name\n"
+                + "		O.order_date >= DATEADD(month, -6, GETDATE())\n"
                 + ") AS subquery\n"
-                + "WHERE rn = 1\n"
-                + "ORDER BY order_month;\n"
-                + "";
+                + "GROUP BY order_month, best_selling_product\n"
+                + "ORDER BY order_month;";
         try {
             PreparedStatement prepare = connection.prepareStatement(query);
             prepare.execute();

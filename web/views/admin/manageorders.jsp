@@ -106,7 +106,7 @@
                 <a href="manageorders" class = "view-all"><input id = "view-all-btn" type="button" value="Xem tất cả"></a>
                 <%
                     int numPage = 0;
-                    for(int i = 0; i < orders.size(); i+=5){
+                    for(int i = 0; i < orders.size(); i+=15){
                         numPage++;
                         if(numPage == 1){
                 %>
@@ -129,7 +129,7 @@
                     </tr>
                     <tr class = "tbody">
                 <%
-                        for(int j = 0; j < Math.min(5, orders.size()-i); j++){
+                        for(int j = 0; j < Math.min(15, orders.size()-i); j++){
                         
                         
                 %>
